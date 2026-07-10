@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>Login | N99AIorganism</title>
+  <link rel="stylesheet" href="./css/user_tokens.css?v=16000001">
+  <link rel="stylesheet" href="./css/user_dashboard.css?v=16000001">
+  
+<link rel="stylesheet" href="./css/user_auth.css?v=16000001">
+
+</head>
+<body class="user-platform page-auth">
+  <script src="./js/config.js?v=16000002"></script>
+  <script>
+    window.N99_GATEWAY_URL = "https://api.bos-ww.biz.id" || window.N99_CONFIG.API_BASE_URL;
+    window.N99_USER_PAGE = "auth";
+    window.N99_FIREBASE_CONFIG = {
+      apiKey: "AIzaSyBg_BK8vZH2olvDTwIss6F9c1OuiZPV0Og",
+      authDomain: "n99-saas-trading.firebaseapp.com",
+      projectId: "n99-saas-trading",
+      storageBucket: "n99-saas-trading.firebasestorage.app",
+      messagingSenderId: "840525105232",
+      appId: "1:840525105232:web:f375cc7344a57a19f82955"
+    };
+  </script>
+  <script src="./js/route_guard.js?v=16000002"></script>
+  <script src="./js/gateway_client.js?v=16000002"></script>
+  
+<main class="auth-shell">
+  <section class="auth-brand-panel" aria-label="N99AIorganism">
+    <a class="brand-link" href="./index.html" aria-label="N99AIorganism">
+      <span class="brand-mark">N99</span>
+      <span class="brand-name">AIorganism</span>
+    </a>
+    <div class="brand-copy">
+      <span class="eyebrow">
+        <svg aria-hidden="true"><use href="./assets/icons/icons.svg#shield"></use></svg>
+        Secure Access
+      </span>
+      <h1>Premium fintech login for controlled AI trading.</h1>
+      <p>Masuk dengan Firebase Auth, referral tracking otomatis, dan isolasi multi-tenant via JWT gateway.</p>
+    </div>
+    <div class="trust-row" aria-label="Security notes">
+      <div>
+        <svg aria-hidden="true"><use href="./assets/icons/icons.svg#lock"></use></svg>
+        Email verified access
+      </div>
+      <div>
+        <svg aria-hidden="true"><use href="./assets/icons/icons.svg#key"></use></svg>
+        Referral capture (?ref=CODE)
+      </div>
+    </div>
+  </section>
+
+  <section class="auth-card glass-panel" aria-labelledby="authTitle">
+    <div class="auth-card-glow" aria-hidden="true"></div>
+    <div class="auth-card-inner">
+      <div class="auth-heading">
+        <span class="mini-logo">N99</span>
+        <div>
+          <h2 id="authTitle">Welcome Back</h2>
+          <p data-auth-subtitle>Login untuk mengakses AI trading dashboard.</p>
+        </div>
+      </div>
+
+      <div class="neon-pill" data-referral-banner hidden>Referral aktif</div>
+
+      <div class="auth-tabs" role="tablist" aria-label="Auth mode">
+        <button class="is-active" type="button" role="tab" aria-selected="true" data-auth-mode="login">Login</button>
+        <button type="button" role="tab" aria-selected="false" data-auth-mode="register">Register</button>
+      </div>
+
+      <div class="auth-alert" role="status" aria-live="polite" data-auth-message hidden></div>
+
+      <form class="auth-form is-active" id="loginForm" data-form="login" novalidate>
+        <button class="google-button" type="button" data-google-login>
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#google"></use></svg>
+          Continue with Google
+        </button>
+        <div class="divider"><span>or login with email</span></div>
+        <label class="field">
+          <span>Email Address</span>
+          <div class="field-control">
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#mail"></use></svg>
+            <input name="email" type="email" autocomplete="email" placeholder="you@n99.ai" required>
+          </div>
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <div class="field-control">
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#lock"></use></svg>
+            <input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+            <button class="password-toggle" type="button" data-toggle-password="loginPassword" aria-label="Tampilkan password">
+              <svg aria-hidden="true"><use href="./assets/icons/icons.svg#eye"></use></svg>
+            </button>
+          </div>
+        </label>
+        <div class="form-options">
+          <label class="remember"><input id="rememberMe" type="checkbox" checked><span>Remember me</span></label>
+          <button class="link-button" type="button" data-auth-mode="forgot">Forgot password?</button>
+        </div>
+        <button class="submit-button" type="submit" data-submit-login>Login Securely</button>
+      </form>
+
+      <form class="auth-form" id="registerForm" data-form="register" novalidate>
+        <label class="field">
+          <span>Full Name</span>
+          <div class="field-control">
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#user"></use></svg>
+            <input name="name" type="text" autocomplete="name" placeholder="Your name" required minlength="2">
+          </div>
+        </label>
+        <label class="field">
+          <span>Email Address</span>
+          <div class="field-control">
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#mail"></use></svg>
+            <input name="email" type="email" autocomplete="email" placeholder="you@n99.ai" required>
+          </div>
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <div class="field-control">
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#lock"></use></svg>
+            <input id="registerPassword" name="password" type="password" autocomplete="new-password" placeholder="Minimum 8 characters" required minlength="8">
+            <button class="password-toggle" type="button" data-toggle-password="registerPassword" aria-label="Tampilkan password">
+              <svg aria-hidden="true"><use href="./assets/icons/icons.svg#eye"></use></svg>
+            </button>
+          </div>
+        </label>
+        <label class="consent">
+          <input type="checkbox" required>
+          <span>Saya memahami bahwa N99AIorganism tidak menyimpan dana dan tidak menjamin profit trading.</span>
+        </label>
+        <button class="submit-button" type="submit" data-submit-register>Create Verified Account</button>
+        <p class="form-note">Referral dari URL <code>?ref=XYZ123</code> disimpan otomatis ke sessionStorage.</p>
+      </form>
+
+      <form class="auth-form" id="forgotForm" data-form="forgot" novalidate>
+        <div class="forgot-copy">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#key"></use></svg>
+          <h3>Reset your password</h3>
+          <p>Masukkan email akun N99. Firebase akan mengirim link reset password.</p>
+        </div>
+        <label class="field">
+          <span>Email Address</span>
+          <div class="field-control">
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#mail"></use></svg>
+            <input name="email" type="email" autocomplete="email" placeholder="you@n99.ai" required>
+          </div>
+        </label>
+        <button class="submit-button" type="submit" data-submit-forgot>Send Reset Link</button>
+        <button class="secondary-button" type="button" data-auth-mode="login">Back to Login</button>
+      </form>
+
+      <section class="verification-panel" data-verification-panel hidden>
+        <svg aria-hidden="true"><use href="./assets/icons/icons.svg#mail"></use></svg>
+        <h3>Verify your email</h3>
+        <p>Kami sudah mengirim email verification ke <strong data-verification-email>akun kamu</strong>.</p>
+        <div class="verification-actions">
+          <button class="submit-button" type="button" data-resend-verification>Resend Verification</button>
+          <button class="secondary-button" type="button" data-auth-mode="login">Back to Login</button>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+
+  
+<script>
+  window.N99_USER_LANDING_URL = "./index.html";
+  window.N99_USER_DASHBOARD_URL = "./panel_dashboard.html";
+</script>
+<script type="module" src="./js/auth_handler.js?v=16000002"></script>
+
+</body>
+</html>

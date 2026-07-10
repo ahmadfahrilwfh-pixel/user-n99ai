@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>Billing | N99AIorganism</title>
+  <link rel="stylesheet" href="./css/user_tokens.css?v=16000001">
+  <link rel="stylesheet" href="./css/user_dashboard.css?v=16000001">
+  
+<style>
+  .billing-main{display:grid;gap:1rem;padding:1rem;position:relative;z-index:1}
+  .billing-hero{border-radius:var(--radius);padding:1rem}
+  .billing-hero h1{margin:0.35rem 0 0;font-size:clamp(2rem,10vw,3rem)}
+  .billing-grid{display:grid;gap:0.75rem;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .billing-grid article{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.075);border-radius:var(--radius-sm);padding:0.85rem}
+  .billing-grid span{color:var(--muted-2);display:block;font-size:0.74rem;font-weight:800}
+  .billing-grid strong{color:#fff0cf;display:block;font-size:1.15rem;margin-top:0.2rem}
+  .invoice-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+  .invoice-table th,.invoice-table td{padding:0.65rem 0.4rem;border-bottom:1px solid rgba(255,255,255,.06);text-align:left}
+  .countdown-bar{height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-top:0.75rem}
+  .countdown-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold),var(--gold-light));width:50%}
+  @media(max-width:760px){.billing-grid{grid-template-columns:1fr}}
+</style>
+
+</head>
+<body class="user-platform page-billing">
+  <script src="./js/config.js?v=16000002"></script>
+  <script>
+    window.N99_GATEWAY_URL = "https://api.bos-ww.biz.id" || window.N99_CONFIG.API_BASE_URL;
+    window.N99_USER_PAGE = "billing";
+    window.N99_FIREBASE_CONFIG = {
+      apiKey: "AIzaSyBg_BK8vZH2olvDTwIss6F9c1OuiZPV0Og",
+      authDomain: "n99-saas-trading.firebaseapp.com",
+      projectId: "n99-saas-trading",
+      storageBucket: "n99-saas-trading.firebasestorage.app",
+      messagingSenderId: "840525105232",
+      appId: "1:840525105232:web:f375cc7344a57a19f82955"
+    };
+  </script>
+  <script src="./js/route_guard.js?v=16000002"></script>
+  <script src="./js/gateway_client.js?v=16000002"></script>
+  
+<div class="dashboard-shell">
+  <header class="app-header">
+    <a class="app-brand" href="./panel_dashboard.html"><span>N99</span><strong>Billing</strong></a>
+    <span class="neon-pill" id="billingStatusPill">SYNCING</span>
+  </header>
+
+  <main class="billing-main">
+    <section class="billing-hero glass-panel">
+      <p class="section-label">Commercial Subscription</p>
+      <h1 id="billingTier">FREE</h1>
+      <p class="muted" id="billingCycleText">Memuat siklus langganan...</p>
+      <div class="countdown-bar"><span id="billingCountdownBar"></span></div>
+      <p class="control-note" id="billingCountdownLabel">Watchdog Phase 14 sync active</p>
+    </section>
+
+    <div class="billing-grid">
+      <article><span>Status</span><strong id="billingStatus">-</strong></article>
+      <article><span>Days Remaining</span><strong id="billingDays">-</strong></article>
+      <article><span>Broker Access</span><strong id="billingBroker">-</strong></article>
+    </div>
+
+    <section class="glass-panel" style="border-radius:var(--radius);padding:1rem;">
+      <div class="card-topline" style="margin-bottom:0.75rem;">
+        <p class="section-label" style="margin:0;">Invoice Receipt History</p>
+        <span class="neon-pill" id="billingInvoiceCount">0</span>
+      </div>
+      <div style="overflow:auto;">
+        <table class="invoice-table">
+          <thead><tr><th>Date</th><th>Status</th><th>Tier</th><th>Amount</th><th>Reference</th></tr></thead>
+          <tbody id="billingInvoiceBody"><tr><td colspan="5" class="muted">Loading invoices...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  
+<nav class="bottom-nav" aria-label="Bottom navigation">
+  <a class="" href="./panel_dashboard.html" >
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#home"></use></svg>
+    Home
+  </a>
+  <a class="" href="./panel_broker.html" >
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#plug"></use></svg>
+    Broker
+  </a>
+  <a class="is-active" href="./panel_billing.html" aria-current="page">
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#wallet"></use></svg>
+    Billing
+  </a>
+  <a href="./auth_gateway.html">
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#profile"></use></svg>
+    Account
+  </a>
+</nav>
+
+</div>
+
+  
+<script>
+  window.N99_USER_LANDING_URL = "./index.html";
+  window.N99_USER_AUTH_URL = "./index.html";
+</script>
+<script src="./js/billing_panel.js?v=16000002"></script>
+
+</body>
+</html>

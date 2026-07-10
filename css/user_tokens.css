@@ -1,0 +1,200 @@
+:root {
+  --bg: #020202;
+  --bg-soft: #080808;
+  --panel: rgba(14, 14, 14, 0.72);
+  --panel-strong: rgba(9, 9, 9, 0.88);
+  --line: rgba(244, 189, 80, 0.24);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --line-bright: rgba(245, 184, 45, 0.52);
+  --gold: #f5b82d;
+  --gold-light: #ffe4a0;
+  --gold-deep: #9b6418;
+  --green: #58e365;
+  --red: #ff5b61;
+  --text: #f8f4eb;
+  --muted: #b9b0a1;
+  --muted-2: #7f7667;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  --radius: 22px;
+  --radius-sm: 14px;
+  --nav-height: 82px;
+  --shell: 1240px;
+  --glow-gold: 0 0 46px rgba(245, 184, 45, 0.22);
+  --glow-gold-soft: 0 0 22px rgba(245, 184, 45, 0.14);
+  --glow-green: 0 0 30px rgba(87, 231, 104, 0.28);
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; min-width: 320px; }
+
+/* Institutional-grade focus ring — accessible without looking like a casino flash */
+:focus-visible {
+  outline: 2px solid rgba(245, 184, 45, 0.65);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 18% 2%, rgba(245, 184, 45, 0.16), transparent 30rem),
+    radial-gradient(circle at 90% 28%, rgba(88, 227, 101, 0.08), transparent 28rem),
+    linear-gradient(180deg, #030303 0%, #070604 48%, #020202 100%);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100svh;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+svg, img { display: block; }
+
+.glass-panel {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025)),
+    var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, 0.08);
+  position: relative;
+  transition: border-color 260ms var(--ease-lux), box-shadow 260ms var(--ease-lux), transform 260ms var(--ease-lux);
+}
+
+.glass-panel::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  content: "";
+  height: 1px;
+  left: 14px;
+  position: absolute;
+  right: 14px;
+  top: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .glass-panel:hover {
+    border-color: var(--line-bright);
+    box-shadow: var(--shadow), var(--glow-gold-soft), inset 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+.neon-pill {
+  align-items: center;
+  background: rgba(245, 184, 45, 0.09);
+  border: 1px solid rgba(245, 184, 45, 0.22);
+  border-radius: 999px;
+  color: var(--gold-light);
+  display: inline-flex;
+  font-size: 0.76rem;
+  font-weight: 950;
+  gap: 0.42rem;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.7rem;
+  text-transform: uppercase;
+}
+
+.neon-pill.is-live {
+  background: rgba(87, 231, 104, 0.1);
+  border-color: rgba(87, 231, 104, 0.26);
+  color: #caffcf;
+}
+
+.neon-pill.is-danger {
+  background: rgba(255, 95, 102, 0.1);
+  border-color: rgba(255, 95, 102, 0.28);
+  color: #ffd0d2;
+}
+
+.button-primary {
+  align-items: center;
+  background: linear-gradient(135deg, #fff0bb 0%, var(--gold) 42%, #b87517 100%);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 34px rgba(245, 184, 45, 0.28), inset 0 1px rgba(255, 255, 255, 0.55);
+  color: #0d0800;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 0.55rem;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0.85rem 1.2rem;
+  transition: box-shadow 220ms var(--ease-lux), transform 160ms var(--ease-lux), filter 220ms var(--ease-lux);
+  width: 100%;
+}
+
+.button-ghost {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #f7ddb0;
+  display: inline-flex;
+  font-weight: 900;
+  gap: 0.55rem;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0.85rem 1.2rem;
+  transition: border-color 220ms var(--ease-lux), background 220ms var(--ease-lux), transform 160ms var(--ease-lux);
+  width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button-primary:hover:not(:disabled) {
+    box-shadow: 0 0 48px rgba(245, 184, 45, 0.4), inset 0 1px rgba(255, 255, 255, 0.6);
+    filter: brightness(1.04);
+    transform: translateY(-1px);
+  }
+
+  .button-ghost:hover:not(:disabled) {
+    background: rgba(245, 184, 45, 0.08);
+    border-color: var(--line-bright);
+    transform: translateY(-1px);
+  }
+}
+
+.button-primary:active:not(:disabled),
+.button-ghost:active:not(:disabled) {
+  transform: translateY(0) scale(0.985);
+}
+
+.button-primary:disabled,
+.button-ghost:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.lock-overlay {
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(2, 2, 2, 0.55);
+  border-radius: inherit;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1.5rem;
+  position: absolute;
+  text-align: center;
+  z-index: 5;
+}
+
+.lock-overlay .lock-badge {
+  background: rgba(245, 184, 45, 0.12);
+  border: 1px solid rgba(245, 184, 45, 0.35);
+  border-radius: 18px;
+  color: #fff2d1;
+  font-weight: 850;
+  max-width: 22rem;
+  padding: 1rem 1.2rem;
+}
+
+.gated-blur.is-locked > .gated-content {
+  filter: blur(7px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.positive { color: var(--green) !important; }
+.negative { color: var(--red) !important; }
+.muted { color: var(--muted); }

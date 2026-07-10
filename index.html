@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>N99 AI | Multi-Tenant AI Trading SaaS</title>
+  <link rel="stylesheet" href="./css/user_tokens.css?v=16000001">
+  <link rel="stylesheet" href="./css/user_dashboard.css?v=16000001">
+  
+<link rel="stylesheet" href="./css/landing.css?v=16000002">
+<link rel="stylesheet" href="./css/user_auth.css?v=16000002">
+
+</head>
+<body class="user-platform page-landing">
+  <script src="./js/config.js?v=16000002"></script>
+  <script>
+    window.N99_GATEWAY_URL = "https://api.bos-ww.biz.id" || window.N99_CONFIG.API_BASE_URL;
+    window.N99_USER_PAGE = "landing";
+    window.N99_FIREBASE_CONFIG = {
+      apiKey: "AIzaSyBg_BK8vZH2olvDTwIss6F9c1OuiZPV0Og",
+      authDomain: "n99-saas-trading.firebaseapp.com",
+      projectId: "n99-saas-trading",
+      storageBucket: "n99-saas-trading.firebasestorage.app",
+      messagingSenderId: "840525105232",
+      appId: "1:840525105232:web:f375cc7344a57a19f82955"
+    };
+  </script>
+  <script src="./js/route_guard.js?v=16000002"></script>
+  <script src="./js/gateway_client.js?v=16000002"></script>
+  
+
+<div class="landing" data-icons-base="./assets/icons/icons.svg" id="main">
+  <a class="skip-link" href="#main">Lewati ke konten</a>
+
+  <header class="site-header" data-header>
+    <nav class="nav shell" aria-label="Navigasi utama">
+      <a class="brand" href="./index.html" aria-label="N99AIorganism">
+        <span class="brand-mark">N99</span>
+        <span class="brand-text">AIorganism</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu" data-nav-toggle>
+        <svg aria-hidden="true"><use href="./assets/icons/icons.svg#menu"></use></svg>
+        <span class="sr-only">Buka menu</span>
+      </button>
+
+      <div class="nav-menu" id="navMenu" data-nav-menu>
+        <a href="#intro">Introduction</a>
+        <a href="#pricing">Pricing</a>
+        <button class="nav-login" type="button" data-auth-open="login">Login</button>
+        <button class="nav-cta" type="button" data-auth-open="register">Get Started</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero section" id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="shell hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#spark"></use></svg>
+          Multi-Tenant Gated SaaS
+        </div>
+        <h1>AI That Works. You Relax. We Execute.</h1>
+        <p class="hero-lead">
+          N99 AI adalah ekosistem trading berbasis AI dengan isolasi multi-tenant, eksekusi MT5 terkontrol,
+          dan gateway keamanan Firebase JWT — dirancang untuk trader profesional yang menuntut kontrol penuh.
+        </p>
+
+        <div class="hero-actions">
+          <button class="button button-primary" type="button" data-auth-open="register">
+            Start Trading with AI
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#arrow-right"></use></svg>
+          </button>
+          <a class="button button-ghost" href="#pricing">View Pricing &amp; Plans</a>
+        </div>
+
+        <div class="hero-points" aria-label="Nilai utama">
+          <span>Observe</span>
+          <span>Assist</span>
+          <span>Automate</span>
+        </div>
+
+        <div class="funds-card glass-panel">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#shield"></use></svg>
+          <div>
+            <strong>N99 does not hold your funds</strong>
+            <p>Dana tetap berada di akun broker Anda. N99 hanya menghubungkan eksekusi AI melalui permission terbatas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="Preview dashboard N99 AI">
+        <div class="visual-halo" aria-hidden="true"></div>
+        <div class="hero-panel-preview glass-panel">
+          <span class="section-kicker">Live Tenant Dashboard</span>
+          <h3>Isolated metrics per Firebase UID</h3>
+          <div class="preview-metrics">
+            <article><span>Balance</span><strong>$12,450.00</strong></article>
+            <article><span>Equity</span><strong>$12,680.50</strong></article>
+            <article><span>Winrate</span><strong>68%</strong></article>
+            <article><span>Tier</span><strong>PRO</strong></article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="intro">
+    <div class="shell">
+      <div class="section-heading reveal">
+        <span class="section-kicker">Introduction to N99 AI</span>
+        <h2>High-security AI trading for gated SaaS tenants.</h2>
+        <p>
+          N99 AI memisahkan keputusan AI, validasi risiko, dan eksekusi broker agar setiap tenant beroperasi
+          dalam lingkungan terisolasi dengan audit trail lengkap dan kontrol tier-based.
+        </p>
+      </div>
+
+      <div class="intro-grid">
+        <article class="intro-card glass-panel reveal">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#brain"></use></svg>
+          <h3>AI Signal Engine</h3>
+          <p>Signal berbasis data real-time, confidence score, dan filter sentimen berita untuk tier PRO &amp; VIP.</p>
+        </article>
+        <article class="intro-card glass-panel reveal">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#shield"></use></svg>
+          <h3>Multi-Tenant Security</h3>
+          <p>Firebase Authentication, JWT gateway di port 8800, dan isolasi data per UID tenant.</p>
+        </article>
+        <article class="intro-card glass-panel reveal">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#server"></use></svg>
+          <h3>MT5 Execution Layer</h3>
+          <p>Eksekusi broker universal via MT5 worker — dari standard execution hingga dedicated VIP node.</p>
+        </article>
+        <article class="intro-card glass-panel reveal">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#chart"></use></svg>
+          <h3>Risk Control</h3>
+          <p>Limit exposure, kill switch, dan approval flow sebelum setiap order live dieksekusi.</p>
+        </article>
+        <article class="intro-card glass-panel reveal">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#plug"></use></svg>
+          <h3>Broker Gateway</h3>
+          <p>Koneksi broker terenkripsi tanpa akses withdraw — Anda tetap memegang kendali penuh atas dana.</p>
+        </article>
+        <article class="intro-card glass-panel reveal">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#lock"></use></svg>
+          <h3>Gated Subscription</h3>
+          <p>Akses dashboard, broker panel, dan eksekusi AI dikontrol oleh tier aktif dan status billing.</p>
+        </article>
+      </div>
+
+      <div class="trust-strip">
+        <article class="glass-panel reveal">
+          <strong>8800</strong>
+          <span>API Gateway Port</span>
+        </article>
+        <article class="glass-panel reveal">
+          <strong>JWT</strong>
+          <span>Tenant Isolation</span>
+        </article>
+        <article class="glass-panel reveal">
+          <strong>MT5</strong>
+          <span>Universal Broker</span>
+        </article>
+        <article class="glass-panel reveal">
+          <strong>24/7</strong>
+          <span>AI Monitoring</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="shell">
+      <div class="section-heading reveal">
+        <span class="section-kicker">Pricing &amp; Plans</span>
+        <h2>Pilih tier sesuai skala trading Anda.</h2>
+        <p>System fee bulanan ditagih terpisah dari deposit broker minimum. Upgrade tier kapan saja melalui billing panel.</p>
+      </div>
+
+      <div class="tier-grid">
+        <article class="tier-card glass-panel reveal">
+          <div class="tier-top">
+            <h3>STARTER TIER</h3>
+            <p>Ideal untuk trader solo yang ingin memulai dengan AI logic dasar.</p>
+          </div>
+          <div class="price">Rp 1.000.000<span>/month (System Fee)</span></div>
+          <div class="deposit-note">Minimum Broker Deposit: $500</div>
+          <ul>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>1 Broker Account</li>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>Basic AI Logic</li>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>Standard Execution</li>
+          </ul>
+          <button class="button button-ghost" type="button" data-auth-open="register" data-tier="starter">Choose Starter</button>
+        </article>
+
+        <article class="tier-card tier-featured glass-panel reveal">
+          <div class="tier-badge">Most Popular</div>
+          <div class="tier-top">
+            <h3>PRO TIER</h3>
+            <p>Untuk trader aktif yang membutuhkan AI lanjutan dan eksekusi prioritas.</p>
+          </div>
+          <div class="price">Rp 5.000.000<span>/month (System Fee)</span></div>
+          <div class="deposit-note">Minimum Broker Deposit: $2,500</div>
+          <ul>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>3 Broker Accounts</li>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>Advanced AI (News/Sentiment Filter)</li>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>Priority Execution</li>
+          </ul>
+          <button class="button button-primary" type="button" data-auth-open="register" data-tier="pro">Choose Pro</button>
+        </article>
+
+        <article class="tier-card glass-panel reveal">
+          <div class="tier-top">
+            <h3>VIP TIER</h3>
+            <p>Deployment enterprise dengan worker MT5 dedicated dan node eksekusi VIP.</p>
+          </div>
+          <div class="price">Rp 10.000.000<span>/month (System Fee)</span></div>
+          <div class="deposit-note">Minimum Broker Deposit: $10,000</div>
+          <ul>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>Unlimited Brokers</li>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>Dedicated MT5 Worker</li>
+            <li><svg aria-hidden="true"><use href="./assets/icons/icons.svg#check"></use></svg>VIP Node Execution</li>
+          </ul>
+          <button class="button button-ghost" type="button" data-auth-open="register" data-tier="vip">Choose VIP</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div>
+        <a class="brand" href="./index.html" aria-label="N99AIorganism">
+          <span class="brand-mark">N99</span>
+          <span class="brand-text">AIorganism</span>
+        </a>
+        <p>Premium Multi-Tenant AI Trading SaaS — gated, secure, tenant-isolated.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#intro">Introduction</a>
+        <a href="#pricing">Pricing</a>
+        <button type="button" data-auth-open="login">Login</button>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>&copy; <span data-year></span> N99AIorganism. All rights reserved.</span>
+      <span>Observe &middot; Assist &middot; Automate</span>
+    </div>
+  </footer>
+</div>
+
+
+<div class="auth-modal-overlay" data-auth-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="auth-modal">
+    <section class="auth-card glass-panel" aria-labelledby="authTitle">
+      <button class="auth-modal-close" type="button" data-auth-close aria-label="Tutup">
+        <svg aria-hidden="true"><use href="./assets/icons/icons.svg#close"></use></svg>
+      </button>
+      <div class="auth-card-glow" aria-hidden="true"></div>
+      <div class="auth-card-inner">
+        <div class="auth-heading">
+          <span class="mini-logo">N99</span>
+          <div>
+            <h2 id="authTitle">Welcome Back</h2>
+            <p data-auth-subtitle>Login untuk mengakses AI trading dashboard.</p>
+          </div>
+        </div>
+
+        <div class="neon-pill" data-referral-banner hidden>Referral aktif</div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Auth mode">
+          <button class="is-active" type="button" role="tab" aria-selected="true" data-auth-mode="login">Login</button>
+          <button type="button" role="tab" aria-selected="false" data-auth-mode="register">Register</button>
+        </div>
+
+        <div class="auth-alert" role="status" aria-live="polite" data-auth-message hidden></div>
+
+        <form class="auth-form is-active" id="loginForm" data-form="login" novalidate>
+          <button class="google-button" type="button" data-google-login>
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#google"></use></svg>
+            Continue with Google
+          </button>
+          <div class="divider"><span>or login with email</span></div>
+          <label class="field">
+            <span>Email Address</span>
+            <div class="field-control">
+              <svg aria-hidden="true"><use href="./assets/icons/icons.svg#mail"></use></svg>
+              <input name="email" type="email" autocomplete="email" placeholder="you@n99.ai" required>
+            </div>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <div class="field-control">
+              <svg aria-hidden="true"><use href="./assets/icons/icons.svg#lock"></use></svg>
+              <input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+              <button class="password-toggle" type="button" data-toggle-password="loginPassword" aria-label="Tampilkan password">
+                <svg aria-hidden="true"><use href="./assets/icons/icons.svg#eye"></use></svg>
+              </button>
+            </div>
+          </label>
+          <div class="form-options">
+            <label class="remember"><input id="rememberMe" type="checkbox" checked><span>Remember me</span></label>
+            <button class="link-button" type="button" data-auth-mode="forgot">Forgot password?</button>
+          </div>
+          <button class="submit-button" type="submit" data-submit-login>Login Securely</button>
+        </form>
+
+        <form class="auth-form" id="registerForm" data-form="register" novalidate>
+          <label class="field">
+            <span>Full Name</span>
+            <div class="field-control">
+              <svg aria-hidden="true"><use href="./assets/icons/icons.svg#user"></use></svg>
+              <input name="name" type="text" autocomplete="name" placeholder="Your name" required minlength="2">
+            </div>
+          </label>
+          <label class="field">
+            <span>Email Address</span>
+            <div class="field-control">
+              <svg aria-hidden="true"><use href="./assets/icons/icons.svg#mail"></use></svg>
+              <input name="email" type="email" autocomplete="email" placeholder="you@n99.ai" required>
+            </div>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <div class="field-control">
+              <svg aria-hidden="true"><use href="./assets/icons/icons.svg#lock"></use></svg>
+              <input id="registerPassword" name="password" type="password" autocomplete="new-password" placeholder="Minimum 8 characters" required minlength="8">
+              <button class="password-toggle" type="button" data-toggle-password="registerPassword" aria-label="Tampilkan password">
+                <svg aria-hidden="true"><use href="./assets/icons/icons.svg#eye"></use></svg>
+              </button>
+            </div>
+          </label>
+          <label class="consent">
+            <input type="checkbox" required>
+            <span>Saya memahami bahwa N99AIorganism tidak menyimpan dana dan tidak menjamin profit trading.</span>
+          </label>
+          <button class="submit-button" type="submit" data-submit-register>Create Verified Account</button>
+          <p class="form-note">Referral dari URL <code>?ref=XYZ123</code> disimpan otomatis ke sessionStorage.</p>
+        </form>
+
+        <form class="auth-form" id="forgotForm" data-form="forgot" novalidate>
+          <div class="forgot-copy">
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#key"></use></svg>
+            <h3>Reset your password</h3>
+            <p>Masukkan email akun N99. Firebase akan mengirim link reset password.</p>
+          </div>
+          <label class="field">
+            <span>Email Address</span>
+            <div class="field-control">
+              <svg aria-hidden="true"><use href="./assets/icons/icons.svg#mail"></use></svg>
+              <input name="email" type="email" autocomplete="email" placeholder="you@n99.ai" required>
+            </div>
+          </label>
+          <button class="submit-button" type="submit" data-submit-forgot>Send Reset Link</button>
+          <button class="secondary-button" type="button" data-auth-mode="login">Back to Login</button>
+        </form>
+
+        <section class="verification-panel" data-verification-panel hidden>
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#mail"></use></svg>
+          <h3>Verify your email</h3>
+          <p>Kami sudah mengirim email verification ke <strong data-verification-email>akun kamu</strong>.</p>
+          <div class="verification-actions">
+            <button class="submit-button" type="button" data-resend-verification>Resend Verification</button>
+            <button class="secondary-button" type="button" data-auth-mode="login">Back to Login</button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>
+
+  
+<script>
+  window.N99_USER_LANDING_URL = "./index.html";
+  window.N99_USER_DASHBOARD_URL = "./panel_dashboard.html";
+</script>
+<script src="./js/landing.js?v=16000002"></script>
+<script type="module" src="./js/auth_handler.js?v=16000002"></script>
+
+</body>
+</html>

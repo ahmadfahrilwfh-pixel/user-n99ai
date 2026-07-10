@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>Broker | N99AIorganism</title>
+  <link rel="stylesheet" href="./css/user_tokens.css?v=16000001">
+  <link rel="stylesheet" href="./css/user_dashboard.css?v=16000001">
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css">
+<style>
+  .broker-page-main{display:grid;gap:1rem;padding:1rem;position:relative;z-index:1}
+  .broker-form-card{border-radius:var(--radius);padding:1rem;position:relative;overflow:hidden}
+  .broker-form{display:grid;gap:0.85rem}
+  .broker-form label{display:grid;gap:0.35rem;color:#f7dca7;font-size:0.86rem;font-weight:850}
+  .broker-form input{min-height:52px;background:rgba(255,255,255,.04);border:1px solid rgba(245,184,45,.18);border-radius:16px;color:var(--text);padding:0 0.9rem}
+  .broker-result{margin-top:0.85rem;padding:0.9rem;border-radius:16px;border:1px solid rgba(245,184,45,.18);background:rgba(0,0,0,.28);min-height:90px;font-size:0.9rem}
+  .broker-actions{display:grid;gap:0.7rem;grid-template-columns:1fr 1fr}
+  @media(max-width:560px){.broker-actions{grid-template-columns:1fr}}
+  .broker-connected-card{display:grid;gap:1rem}
+  .connected-status{display:grid;gap:0.55rem;padding:1rem;border-radius:16px;border:1px solid rgba(46,204,113,.28);background:rgba(46,204,113,.08)}
+  .connected-status h3{margin:0;color:#fff5df;font-size:1.05rem}
+  .connected-meta{display:grid;gap:0.35rem;color:#d8c7a0;font-size:0.88rem}
+  .connected-meta b{color:#fff5df}
+  .button-danger{min-height:52px;border-radius:16px;border:1px solid rgba(255,77,77,.45);background:linear-gradient(180deg,rgba(255,77,77,.22),rgba(120,20,20,.35));color:#ffe8e8;font-weight:900;cursor:pointer}
+  .button-danger:disabled{opacity:.55;cursor:not-allowed}
+  #brokerLockOverlay{display:none}
+  #brokerLockOverlay.is-visible{display:flex}
+  #brokerConnectedCard{display:none}
+  #brokerConnectedCard.is-visible{display:grid}
+  .gated-blur.is-locked > .gated-content{filter:blur(7px);pointer-events:none;user-select:none}
+  .gated-blur:not(.is-locked) > .gated-content{filter:none;pointer-events:auto;user-select:auto}
+  /* Select2 — Smart Broker Autofill combobox, restyled to match glass theme */
+  .select2-container{width:100%!important}
+  .select2-container .select2-selection--single{height:52px;background:rgba(255,255,255,.04);border:1px solid rgba(245,184,45,.18);border-radius:16px;display:flex;align-items:center;padding:0 0.9rem}
+  .select2-container .select2-selection--single .select2-selection__rendered{color:var(--text);line-height:normal;padding:0}
+  .select2-container .select2-selection--single .select2-selection__arrow{height:52px;right:0.6rem}
+  .select2-dropdown{background:#0d0d0f;border:1px solid rgba(245,184,45,.22);border-radius:14px;overflow:hidden}
+  .select2-search--dropdown .select2-search__field{background:rgba(255,255,255,.05);border:1px solid rgba(245,184,45,.18);border-radius:10px;color:var(--text)}
+  .select2-results__option{color:#fff5df}
+  .select2-container--default .select2-results__option--highlighted[aria-selected]{background:rgba(245,184,45,.22);color:#fff5df}
+  .select2-container--default .select2-selection--single .select2-selection__arrow b{border-color:#f5b82d transparent transparent transparent}
+</style>
+
+</head>
+<body class="user-platform page-broker">
+  <script src="./js/config.js?v=16000002"></script>
+  <script>
+    window.N99_GATEWAY_URL = "https://api.bos-ww.biz.id" || window.N99_CONFIG.API_BASE_URL;
+    window.N99_USER_PAGE = "broker";
+    window.N99_FIREBASE_CONFIG = {
+      apiKey: "AIzaSyBg_BK8vZH2olvDTwIss6F9c1OuiZPV0Og",
+      authDomain: "n99-saas-trading.firebaseapp.com",
+      projectId: "n99-saas-trading",
+      storageBucket: "n99-saas-trading.firebasestorage.app",
+      messagingSenderId: "840525105232",
+      appId: "1:840525105232:web:f375cc7344a57a19f82955"
+    };
+  </script>
+  <script src="./js/route_guard.js?v=16000002"></script>
+  <script src="./js/gateway_client.js?v=16000002"></script>
+  
+<div class="dashboard-shell">
+  <header class="app-header">
+    <a class="app-brand" href="./panel_dashboard.html"><span>N99</span><strong>Broker Vault</strong></a>
+    <span class="neon-pill" id="brokerTierPill">CHECKING</span>
+  </header>
+
+  <main class="broker-page-main">
+    <section class="broker-form-card glass-panel gated-blur" id="brokerGateRoot">
+      <div class="gated-content">
+        <div class="card-topline" style="margin-bottom:1rem;">
+          <div>
+            <p class="section-label">MT5 Credential Gateway</p>
+            <h2 style="margin:0;color:#fff5df;">Secure Broker Connection</h2>
+          </div>
+          <span class="neon-pill">AES-256 VAULT</span>
+        </div>
+        <section class="broker-connected-card" id="brokerConnectedCard" hidden aria-hidden="true">
+          <div class="connected-status">
+            <span class="neon-pill is-live">CONNECTED</span>
+            <h3>Broker Active</h3>
+            <div class="connected-meta" id="connectedBrokerDetails">
+              <div><span>Server</span> <b id="connectedBrokerServer">-</b></div>
+              <div><span>Login</span> <b id="connectedBrokerLogin">-</b></div>
+              <div><span>Symbol</span> <b id="connectedBrokerSymbol">-</b></div>
+            </div>
+          </div>
+          <button class="button-danger" type="button" id="brokerDisconnectBtn">Disconnect &amp; Reset Broker</button>
+        </section>
+        <form class="broker-form" id="userBrokerForm" autocomplete="off">
+          <label>Broker Server<select id="userBrokerServer" style="width:100%"></select></label>
+          <label>MT5 Login<input id="userBrokerLogin" placeholder="Account number"></label>
+          <label>Password<input id="userBrokerPassword" type="password" placeholder="Encrypted to vault RAM"></label>
+          <label>Symbol<input id="userBrokerSymbol" value="XAUUSD"></label>
+          <div class="broker-actions">
+            <button class="button-primary" type="button" id="userBrokerTestBtn">Test Connection</button>
+            <button class="button-ghost" type="button" id="userBrokerSaveBtn">Save to Vault</button>
+          </div>
+        </form>
+        <div class="broker-result" id="userBrokerResult">Menunggu permission check...</div>
+      </div>
+      <div class="lock-overlay" id="brokerLockOverlay" hidden aria-hidden="true">
+        <div class="lock-badge">🔒 Locked — Upgrade Tier to Connect Broker</div>
+      </div>
+    </section>
+  </main>
+
+  
+<nav class="bottom-nav" aria-label="Bottom navigation">
+  <a class="" href="./panel_dashboard.html" >
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#home"></use></svg>
+    Home
+  </a>
+  <a class="is-active" href="./panel_broker.html" aria-current="page">
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#plug"></use></svg>
+    Broker
+  </a>
+  <a class="" href="./panel_billing.html" >
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#wallet"></use></svg>
+    Billing
+  </a>
+  <a href="./auth_gateway.html">
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#profile"></use></svg>
+    Account
+  </a>
+</nav>
+
+</div>
+
+  
+<script>
+  window.N99_USER_LANDING_URL = "./index.html";
+  window.N99_USER_AUTH_URL = "./index.html";
+</script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+<script src="./js/ui_toast.js?v=16000003"></script>
+<script src="./js/broker_panel.js?v=16000004"></script>
+<script>
+  // Smart Broker Autofill — Select2 combobox backed by GET /api/broker/list.
+  // tags:true lets the user type a custom/unlisted broker server manually.
+  (function () {
+    "use strict";
+    function boot() {
+      if (!window.jQuery || !window.jQuery.fn.select2) {
+        window.setTimeout(boot, 50);
+        return;
+      }
+      var $ = window.jQuery;
+      $("#userBrokerServer").select2({
+        theme: "default",
+        width: "100%",
+        tags: true,
+        allowClear: false,
+        placeholder: "Search or type broker server...",
+        minimumInputLength: 0,
+        ajax: {
+          url: function () {
+            return (window.N99Gateway ? window.N99Gateway.gatewayBase() : (window.N99_GATEWAY_URL || window.N99_CONFIG?.API_BASE_URL || "")) + "/api/broker/list";
+          },
+          dataType: "json",
+          delay: 200,
+          cache: true,
+          beforeSend: function (xhr) {
+            var token = window.N99Gateway ? window.N99Gateway.getToken() : "";
+            if (token) xhr.setRequestHeader("Authorization", "Bearer " + token);
+          },
+          processResults: function (data) {
+            var list = Array.isArray(data) ? data : (data.results || []);
+            return { results: list };
+          },
+        },
+      });
+    }
+    document.addEventListener("DOMContentLoaded", boot);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>Dashboard | N99AIorganism</title>
+  <link rel="stylesheet" href="./css/user_tokens.css?v=16000001">
+  <link rel="stylesheet" href="./css/user_dashboard.css?v=16000001">
+  
+<link rel="stylesheet" href="./css/user_dashboard.css?v=16000003">
+
+</head>
+<body class="user-platform page-dashboard">
+  <script src="./js/config.js?v=16000002"></script>
+  <script>
+    window.N99_GATEWAY_URL = "https://api.bos-ww.biz.id" || window.N99_CONFIG.API_BASE_URL;
+    window.N99_USER_PAGE = "dashboard";
+    window.N99_FIREBASE_CONFIG = {
+      apiKey: "AIzaSyBg_BK8vZH2olvDTwIss6F9c1OuiZPV0Og",
+      authDomain: "n99-saas-trading.firebaseapp.com",
+      projectId: "n99-saas-trading",
+      storageBucket: "n99-saas-trading.firebasestorage.app",
+      messagingSenderId: "840525105232",
+      appId: "1:840525105232:web:f375cc7344a57a19f82955"
+    };
+  </script>
+  <script src="./js/route_guard.js?v=16000002"></script>
+  <script src="./js/gateway_client.js?v=16000002"></script>
+  
+<div class="dashboard-shell" id="dashboardRoot">
+  <header class="app-header" aria-label="Dashboard header">
+    <button class="icon-button menu-button" type="button" aria-label="Buka menu" data-menu-toggle>
+      <svg aria-hidden="true"><use href="./assets/icons/icons.svg#menu"></use></svg>
+    </button>
+    <a class="app-brand" href="./panel_dashboard.html" aria-label="N99AIorganism dashboard">
+      <span>N99</span><strong>AIorganism</strong>
+    </a>
+    <span class="neon-pill is-live" id="userTierPill">SYNCING</span>
+  </header>
+
+  <p class="user-welcome-banner" id="userWelcomeBanner" aria-live="polite">Syncing account...</p>
+
+  <div class="page-loading-bar" id="pageLoadingBar" hidden aria-hidden="true"></div>
+
+  <main class="dashboard-main">
+    <section class="glass-panel portfolio-summary" aria-labelledby="portfolioHeading">
+      <div class="card-topline">
+        <div>
+          <p class="section-label">Portfolio Summary</p>
+          <h2 id="portfolioHeading" style="margin:0;color:#fff5df;">Tenant Overview</h2>
+        </div>
+        <div class="balance-badge">
+          <svg aria-hidden="true"><use href="./assets/icons/icons.svg#shield"></use></svg>
+          <span id="metricUserId">Tenant</span>
+        </div>
+      </div>
+      <div class="portfolio-hero-stats">
+        <article class="portfolio-stat-primary">
+          <span>Equity</span>
+          <strong id="metricEquity">-</strong>
+        </article>
+        <article class="portfolio-stat-primary">
+          <span>Balance</span>
+          <strong id="metricBalance">$0.00</strong>
+        </article>
+        <article class="portfolio-stat-primary">
+          <span>Winrate</span>
+          <strong id="metricWinrate">-</strong>
+        </article>
+      </div>
+      <div class="balance-stats balance-stats-compact">
+        <article><span>Margin</span><strong id="metricMargin">-</strong></article>
+        <article><span>Free Margin</span><strong id="metricFreeMargin">-</strong></article>
+        <article><span>Floating PnL</span><strong class="positive" id="metricFloating">-</strong></article>
+        <article><span>Closed PnL</span><strong id="metricPnlSummary">-</strong></article>
+        <article><span>Trades</span><strong id="metricTrades">0</strong></article>
+        <article><span>Source</span><strong id="metricSource">tenant_scoped</strong></article>
+      </div>
+    </section>
+
+    <section class="status-grid">
+      <article class="glass-panel plan-status-card" aria-labelledby="planStatusHeading">
+        <div class="card-topline">
+          <div>
+            <p class="section-label">Active Plan Status</p>
+            <h3 id="planStatusHeading" style="margin:0;color:#fff5df;">Subscription</h3>
+          </div>
+          <span class="live-pill" id="gatewayPill"><i></i><span id="gatewayPillText">STANDBY</span></span>
+        </div>
+        <div class="plan-status-grid">
+          <div><span>Tier</span><strong id="planTierLabel">FREE</strong></div>
+          <div><span>Status</span><strong id="metricSubStatus">CHECKING</strong></div>
+          <div><span>Broker Gate</span><strong id="brokerGateLabel">LOCKED</strong></div>
+        </div>
+        <p class="control-note" id="metricSubCountdown">Menghubungkan ke gateway port 8800...</p>
+        <p class="control-note" id="dashboardNote">Metrics diisolasi per tenant_id (Client ID).</p>
+      </article>
+
+      <article class="glass-panel billing-sandbox-card" aria-labelledby="billingSandboxHeading">
+        <div class="card-topline">
+          <div>
+            <p class="section-label">Sandbox Billing</p>
+            <h3 id="billingSandboxHeading" style="margin:0;color:#fff5df;">Select Plan &amp; Pay</h3>
+          </div>
+          <span class="neon-pill">FAKE TRIPAY</span>
+        </div>
+        <p class="control-note billing-sandbox-note">Simulasi webhook Tripay PAID — mengaktifkan subscription ACTIVE dan MT5 worker.</p>
+        <div class="plan-pay-grid" id="planPayGrid">
+          <button type="button" class="plan-pay-card" data-plan="STARTER">
+            <span class="plan-pay-tier">STARTER</span>
+            <strong>Rp 1.000.000</strong>
+            <small>Min deposit $500</small>
+          </button>
+          <button type="button" class="plan-pay-card is-featured" data-plan="PRO">
+            <span class="plan-pay-tier">PRO</span>
+            <strong>Rp 5.000.000</strong>
+            <small>Min deposit $2,500</small>
+          </button>
+          <button type="button" class="plan-pay-card" data-plan="VIP">
+            <span class="plan-pay-tier">VIP</span>
+            <strong>Rp 10.000.000</strong>
+            <small>Min deposit $10,000</small>
+          </button>
+        </div>
+        <button type="button" class="button-primary pay-simulation-btn" id="paySimulationBtn" disabled>
+          <span class="btn-label">Pay Simulation</span>
+          <span class="btn-spinner" hidden aria-hidden="true"></span>
+        </button>
+        <p class="control-note" id="paymentStatusNote">Pilih tier lalu klik Pay Simulation.</p>
+      </article>
+    </section>
+
+    <section class="broker-vault-section glass-panel gated-blur" id="brokerGateRoot" aria-labelledby="brokerVaultHeading">
+      <div class="gated-content">
+        <div class="card-topline" style="margin-bottom:1rem;">
+          <div>
+            <p class="section-label">Broker Configuration</p>
+            <h3 id="brokerVaultHeading" style="margin:0;color:#fff5df;">MT5 Credential Vault</h3>
+          </div>
+          <span class="neon-pill" id="brokerTierPill">LOCKED</span>
+        </div>
+        <p class="control-note">Credentials dienkripsi AES-256 di backend (port 8800) setelah subscription ACTIVE.</p>
+        <form class="broker-form" id="userBrokerForm" autocomplete="off">
+          <label>Broker Server<input id="userBrokerServer" placeholder="MetaQuotes-Demo" disabled></label>
+          <label>MT5 Login<input id="userBrokerLogin" placeholder="Account number" disabled></label>
+          <label>Password<input id="userBrokerPassword" type="password" placeholder="Encrypted to vault RAM" disabled></label>
+          <label>Symbol<input id="userBrokerSymbol" value="XAUUSD" disabled></label>
+          <div class="broker-actions">
+            <button class="button-primary" type="button" id="userBrokerTestBtn" disabled>
+              <span class="btn-label">Test Connection</span>
+              <span class="btn-spinner" hidden aria-hidden="true"></span>
+            </button>
+            <button class="button-ghost" type="button" id="userBrokerSaveBtn" disabled>
+              <span class="btn-label">Save to Vault</span>
+              <span class="btn-spinner" hidden aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+        <div class="broker-result" id="userBrokerResult">Menunggu subscription ACTIVE untuk membuka vault...</div>
+      </div>
+      <div class="lock-overlay" id="brokerLockOverlay" hidden aria-hidden="true" style="display:none">
+        <div class="lock-badge">🔒 Locked — Activate a plan to unlock Broker Vault</div>
+      </div>
+    </section>
+  </main>
+
+  
+<nav class="bottom-nav" aria-label="Bottom navigation">
+  <a class="is-active" href="./panel_dashboard.html" aria-current="page">
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#home"></use></svg>
+    Home
+  </a>
+  <a class="" href="./panel_broker.html" >
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#plug"></use></svg>
+    Broker
+  </a>
+  <a class="" href="./panel_billing.html" >
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#wallet"></use></svg>
+    Billing
+  </a>
+  <a href="./auth_gateway.html">
+    <svg aria-hidden="true"><use href="./assets/icons/icons.svg#profile"></use></svg>
+    Account
+  </a>
+</nav>
+
+</div>
+
+  
+<script>
+  window.N99_USER_LANDING_URL = "./index.html";
+  window.N99_USER_AUTH_URL = "./index.html";
+</script>
+<script src="./js/ui_toast.js?v=16000003"></script>
+<script type="module" src="./js/client_dashboard.js?v=16000003"></script>
+
+</body>
+</html>
