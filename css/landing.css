@@ -15,7 +15,7 @@ body.page-landing.nav-open {
 
 .skip-link {
   background: var(--gold);
-  color: #080500;
+  color: #08101f;
   font-weight: 800;
   left: 1rem;
   padding: 0.75rem 1rem;
@@ -54,8 +54,8 @@ body.page-landing.nav-open {
 
 .site-header {
   backdrop-filter: blur(18px);
-  background: rgba(2, 2, 2, 0.72);
-  border-bottom: 1px solid rgba(244, 189, 80, 0.12);
+  background: rgba(11, 14, 23, 0.72);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.12);
   left: 0;
   position: sticky;
   right: 0;
@@ -89,7 +89,7 @@ body.page-landing.nav-open {
 }
 
 .brand-text {
-  color: #f8deb0;
+  color: #b8c7db;
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -113,8 +113,8 @@ body.page-landing.nav-open {
 
 .nav-menu {
   background:
-    linear-gradient(180deg, rgba(15, 15, 15, 0.98), rgba(5, 5, 5, 0.98)),
-    radial-gradient(circle at top, rgba(245, 184, 45, 0.16), transparent 16rem);
+    linear-gradient(180deg, rgba(18, 22, 32, 0.98), rgba(13, 17, 27, 0.98)),
+    radial-gradient(circle at top, rgba(0, 240, 255, 0.16), transparent 16rem);
   border: 1px solid var(--line);
   border-radius: 0 0 22px 22px;
   box-shadow: var(--shadow);
@@ -165,7 +165,7 @@ body.page-landing.nav-open {
 
 .nav-cta {
   background: linear-gradient(135deg, var(--gold-light), var(--gold) 44%, var(--gold-deep)) !important;
-  color: #0d0800 !important;
+  color: #08101f !important;
   text-align: center !important;
 }
 
@@ -177,9 +177,9 @@ body.page-landing.nav-open {
 
 .hero-bg {
   background:
-    radial-gradient(circle, rgba(245, 184, 45, 0.16) 0 1px, transparent 1.5px),
-    linear-gradient(rgba(245, 184, 45, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 184, 45, 0.03) 1px, transparent 1px);
+    radial-gradient(circle, rgba(0, 240, 255, 0.16) 0 1px, transparent 1.5px),
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
   background-size: 42px 42px, 84px 84px, 84px 84px;
   inset: 0;
   mask-image: radial-gradient(circle at 55% 30%, black, transparent 68%);
@@ -207,7 +207,7 @@ body.page-landing.nav-open {
 
 .eyebrow {
   align-items: center;
-  background: rgba(245, 184, 45, 0.08);
+  background: rgba(0, 240, 255, 0.08);
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--gold-light);
@@ -286,8 +286,8 @@ body.page-landing.nav-open {
 .button-primary {
   background: linear-gradient(135deg, var(--gold-light), var(--gold) 44%, var(--gold-deep));
   border: 0;
-  box-shadow: 0 12px 40px rgba(245, 184, 45, 0.22);
-  color: #0d0800;
+  box-shadow: 0 12px 40px rgba(0, 240, 255, 0.22);
+  color: #08101f;
 }
 
 .button-ghost {
@@ -350,7 +350,7 @@ body.page-landing.nav-open {
 }
 
 .visual-halo {
-  background: radial-gradient(circle, rgba(245, 184, 45, 0.28), transparent 62%);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.28), transparent 62%);
   filter: blur(28px);
   inset: 8% 4% 0;
   position: absolute;
@@ -440,16 +440,16 @@ body.page-landing.nav-open {
 
 .tier-featured {
   background:
-    radial-gradient(circle at top right, rgba(245, 184, 45, 0.21), transparent 16rem),
+    radial-gradient(circle at top right, rgba(0, 240, 255, 0.21), transparent 16rem),
     linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028)),
     var(--panel-strong);
-  border-color: rgba(245, 184, 45, 0.48);
+  border-color: rgba(0, 240, 255, 0.48);
 }
 
 .tier-badge {
   align-self: flex-start;
-  background: rgba(245, 184, 45, 0.12);
-  border: 1px solid rgba(245, 184, 45, 0.3);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.3);
   border-radius: 999px;
   color: var(--gold-light);
   font-size: 0.72rem;
@@ -466,7 +466,7 @@ body.page-landing.nav-open {
 }
 
 .price {
-  color: #fff3d6;
+  color: #ffffff;
   font-size: clamp(1.6rem, 5vw, 2.2rem);
   font-weight: 950;
   line-height: 1.1;
@@ -482,8 +482,8 @@ body.page-landing.nav-open {
 }
 
 .deposit-note {
-  background: rgba(88, 227, 101, 0.08);
-  border: 1px solid rgba(88, 227, 101, 0.22);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.22);
   border-radius: var(--radius-sm);
   color: var(--green);
   font-size: 0.82rem;
@@ -550,7 +550,7 @@ body.page-landing.nav-open {
 }
 
 .footer {
-  border-top: 1px solid rgba(245, 184, 45, 0.14);
+  border-top: 1px solid rgba(0, 240, 255, 0.14);
   padding: 2rem 0;
 }
 
@@ -754,5 +754,154 @@ body.page-landing.nav-open {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* =========================================
+   FUTURISTIC START AI CIRCLE BUTTON (UI UX PROMAX)
+   ========================================= */
+.button-start-ai {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #0B0E17 0%, #121620 100%);
+  border: 2px solid #00F0FF;
+  box-shadow: 
+    0 0 15px rgba(0, 240, 255, 0.4), 
+    inset 0 0 20px rgba(0, 240, 255, 0.2);
+  color: #00F0FF;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  text-transform: uppercase;
+  outline: none;
+  /* Memastikan tombol tidak peyang saat layarnya mengecil */
+  flex-shrink: 0; 
+}
+
+/* Teks START AI bersinar */
+.button-start-ai .ai-text {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Cincin putus-putus berputar (Inner Ring) */
+.button-start-ai .cyber-ring {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.6);
+  animation: cyber-spin 10s linear infinite;
+  z-index: 0;
+}
+
+/* Efek sapuan Radar menyapu latar tombol */
+.button-start-ai .radar-scan {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: conic-gradient(from 0deg, transparent 70%, rgba(0, 240, 255, 0.35) 100%);
+  animation: cyber-spin 3s linear infinite;
+  z-index: 0;
+}
+
+/* =========================================
+   INTERAKSI KURSOR (HOVER & CLICK)
+   ========================================= */
+
+/* Saat Mouse Mendekat (Berubah ke warna Deep Purple / VaultX Style) */
+.button-start-ai:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 30px rgba(87, 83, 254, 0.6), 
+    inset 0 0 25px rgba(87, 83, 254, 0.4);
+  border-color: #5753FE;
+  color: #ffffff;
+}
+
+.button-start-ai:hover .cyber-ring {
+  border-color: #5753FE;
+}
+
+.button-start-ai:hover .radar-scan {
+  background: conic-gradient(from 0deg, transparent 70%, rgba(87, 83, 254, 0.5) 100%);
+}
+
+.button-start-ai:hover .ai-text {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+/* Saat Ditekan (Animasi Ledakan Sci-Fi) */
+.button-start-ai:active,
+.button-start-ai.is-launching {
+  transform: scale(0.9);
+  background: #00F0FF;
+  box-shadow: 0 0 60px #00F0FF;
+  border-color: #ffffff;
+}
+
+.button-start-ai:active .ai-text,
+.button-start-ai.is-launching .ai-text {
+  color: #0B0E17; /* Teks jadi gelap */
+  text-shadow: none;
+}
+
+/* Bola cahaya meluas saat diklik */
+.button-start-ai.is-launching::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: scifi-blast 0.8s ease-out forwards;
+  z-index: 3;
+}
+
+/* =========================================
+   KEYFRAMES (OTAK ANIMASI)
+   ========================================= */
+@keyframes cyber-spin {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes scifi-blast {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+/* =========================================
+   RESPONSIVE CENTER FIX UNTUK TOMBOL START AI
+   ========================================= */
+.hero-actions .button-start-ai {
+  margin: 0 auto; /* Memaksa tombol ke tengah pada layar HP */
+}
+
+@media (min-width: 560px) {
+  .hero-actions .button-start-ai {
+    margin: 0; /* Mengembalikan posisi rata kiri saat di layar PC agar sejajar dengan teks */
   }
 }

@@ -1,0 +1,218 @@
+/**
+ * UI UX Promax — Select2 Institutional Cyber-HUD overrides
+ * Select2 injects dropdown at document body; scope via .n99-select2-hud* classes.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  --n99-hud-void: rgba(11, 14, 23, 0.95);
+  --n99-hud-glass: rgba(18, 22, 32, 0.85);
+  --n99-hud-cyan: #00f0ff;
+  --n99-hud-cyan-dim: rgba(0, 240, 255, 0.28);
+  --n99-hud-gold: #5753fe;
+  --n99-hud-gold-dim: rgba(87, 83, 254, 0.22);
+  --n99-hud-text: #e8f4ff;
+  --n99-hud-muted: #8aa4b8;
+  --n99-hud-font: "Space Grotesk", "Rajdhani", ui-sans-serif, system-ui, sans-serif;
+  --n99-hud-mono: "Rajdhani", "Space Grotesk", ui-monospace, monospace;
+}
+
+/* ── Container (inline combobox) ── */
+.select2-container.n99-select2-hud {
+  width: 100% !important;
+  font-family: var(--n99-hud-font);
+}
+
+.select2-container.n99-select2-hud .select2-selection--single {
+  min-height: 52px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 0 2.75rem 0 0.95rem;
+  background:
+    linear-gradient(135deg, rgba(0, 240, 255, 0.04) 0%, rgba(87, 83, 254, 0.03) 100%),
+    var(--n99-hud-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--n99-hud-cyan-dim);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 8px 28px rgba(0, 0, 0, 0.35);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+.select2-container.n99-select2-hud.select2-container--focus .select2-selection--single,
+.select2-container.n99-select2-hud.select2-container--open .select2-selection--single {
+  border-color: rgba(0, 240, 255, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(0, 240, 255, 0.12),
+    0 0 22px rgba(0, 240, 255, 0.14),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+  outline: none;
+}
+
+.select2-container.n99-select2-hud .select2-selection--single .select2-selection__rendered {
+  color: var(--n99-hud-text);
+  line-height: 1.35;
+  padding: 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.select2-container.n99-select2-hud .select2-selection--single .select2-selection__placeholder {
+  color: var(--n99-hud-muted);
+  font-weight: 500;
+}
+
+.select2-container.n99-select2-hud .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+  right: 0.75rem;
+  width: 1.25rem;
+}
+
+.select2-container.n99-select2-hud .select2-selection--single .select2-selection__arrow b {
+  border-color: var(--n99-hud-cyan) transparent transparent transparent;
+  border-width: 6px 5px 0 5px;
+  margin-left: -5px;
+  margin-top: -2px;
+  opacity: 0.85;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.select2-container.n99-select2-hud.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.select2-container.n99-select2-hud.select2-container--disabled .select2-selection--single {
+  opacity: 0.48;
+  cursor: not-allowed;
+  filter: grayscale(0.25);
+}
+
+/* ── Dropdown panel (appended to body) ── */
+.select2-dropdown.n99-select2-hud-dropdown {
+  font-family: var(--n99-hud-font);
+  background:
+    linear-gradient(180deg, rgba(0, 240, 255, 0.05) 0%, transparent 18%),
+    var(--n99-hud-void);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 240, 255, 0.32);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(87, 83, 254, 0.08),
+    0 18px 48px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(0, 240, 255, 0.08);
+  overflow: hidden;
+  z-index: 10050;
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-search--dropdown {
+  padding: 0.65rem 0.7rem 0.45rem;
+  background: rgba(0, 0, 0, 0.22);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.12);
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-search--dropdown .select2-search__field {
+  min-height: 42px;
+  padding: 0 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  border-radius: 10px;
+  color: var(--n99-hud-text);
+  font-family: var(--n99-hud-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-search--dropdown .select2-search__field:focus {
+  border-color: rgba(0, 240, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.1);
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-search--dropdown .select2-search__field::placeholder {
+  color: var(--n99-hud-muted);
+  font-weight: 500;
+}
+
+/* ── Results list + futuristic scrollbar ── */
+.select2-dropdown.n99-select2-hud-dropdown .select2-results {
+  max-height: 280px;
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-results__options {
+  max-height: 280px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 240, 255, 0.45) rgba(255, 255, 255, 0.04);
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-results__options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-results__options::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 999px;
+  margin: 4px 0;
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-results__options::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.55), rgba(87, 83, 254, 0.45));
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-results__option {
+  padding: 0.62rem 0.85rem;
+  color: var(--n99-hud-text);
+  font-family: var(--n99-hud-mono);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-left: 2px solid transparent;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease;
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-results__option--highlighted[aria-selected] {
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.14), rgba(87, 83, 254, 0.08));
+  color: #ffffff;
+  border-left-color: var(--n99-hud-cyan);
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-results__option[aria-selected="true"] {
+  background: rgba(87, 83, 254, 0.1);
+  color: var(--n99-hud-gold);
+  border-left-color: var(--n99-hud-gold);
+}
+
+.select2-dropdown.n99-select2-hud-dropdown .select2-results__message {
+  color: var(--n99-hud-muted);
+  font-size: 0.82rem;
+  padding: 0.75rem 0.85rem;
+  font-style: normal;
+}
+
+/* ── Broker page label alignment ── */
+.page-broker .broker-form label {
+  font-family: var(--n99-hud-font);
+  letter-spacing: 0.04em;
+}
+
+.page-broker .broker-form .select2-container.n99-select2-hud {
+  margin-top: 0.15rem;
+}

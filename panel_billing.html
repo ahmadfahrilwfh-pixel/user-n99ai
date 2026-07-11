@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050505">
-  <title>Billing | N99AIorganism</title>
-  <link rel="stylesheet" href="./css/user_tokens.css?v=16000001">
-  <link rel="stylesheet" href="./css/user_dashboard.css?v=16000001">
+  <meta name="theme-color" content="#0d1120">
+  <title>Billing | N99 AI ORGANISM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="./css/user_tokens.css?v=19000001">
+  <link rel="stylesheet" href="./css/user_dashboard.css?v=19000001">
   
 <style>
   .billing-main{display:grid;gap:1rem;padding:1rem;position:relative;z-index:1}
@@ -15,11 +18,11 @@
   .billing-grid{display:grid;gap:0.75rem;grid-template-columns:repeat(3,minmax(0,1fr))}
   .billing-grid article{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.075);border-radius:var(--radius-sm);padding:0.85rem}
   .billing-grid span{color:var(--muted-2);display:block;font-size:0.74rem;font-weight:800}
-  .billing-grid strong{color:#fff0cf;display:block;font-size:1.15rem;margin-top:0.2rem}
+  .billing-grid strong{color:#ffffff;display:block;font-size:1.15rem;margin-top:0.2rem}
   .invoice-table{width:100%;border-collapse:collapse;font-size:0.82rem}
   .invoice-table th,.invoice-table td{padding:0.65rem 0.4rem;border-bottom:1px solid rgba(255,255,255,.06);text-align:left}
   .countdown-bar{height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-top:0.75rem}
-  .countdown-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold),var(--gold-light));width:50%}
+  .countdown-bar span{display:block;height:100%;background:var(--accent-grad);width:50%}
   @media(max-width:760px){.billing-grid{grid-template-columns:1fr}}
 </style>
 
@@ -43,7 +46,7 @@
   
 <div class="dashboard-shell">
   <header class="app-header">
-    <a class="app-brand" href="./panel_dashboard.html"><span>N99</span><strong>Billing</strong></a>
+    <a class="app-brand" href="./panel_dashboard.html"><span>N99 AI ORGANISM</span><strong>Billing</strong></a>
     <span class="neon-pill" id="billingStatusPill">SYNCING</span>
   </header>
 

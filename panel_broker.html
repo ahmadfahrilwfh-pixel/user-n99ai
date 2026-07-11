@@ -3,26 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050505">
-  <title>Broker | N99AIorganism</title>
-  <link rel="stylesheet" href="./css/user_tokens.css?v=16000001">
-  <link rel="stylesheet" href="./css/user_dashboard.css?v=16000001">
-  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css">
+  <meta name="theme-color" content="#0d1120">
+  <title>Broker | N99 AI ORGANISM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="./css/user_tokens.css?v=19000001">
+  <link rel="stylesheet" href="./css/user_dashboard.css?v=19000001">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css">
+  <link rel="stylesheet" href="./css/select2_hud.css?v=19000001">
 <style>
   .broker-page-main{display:grid;gap:1rem;padding:1rem;position:relative;z-index:1}
   .broker-form-card{border-radius:var(--radius);padding:1rem;position:relative;overflow:hidden}
   .broker-form{display:grid;gap:0.85rem}
-  .broker-form label{display:grid;gap:0.35rem;color:#f7dca7;font-size:0.86rem;font-weight:850}
-  .broker-form input{min-height:52px;background:rgba(255,255,255,.04);border:1px solid rgba(245,184,45,.18);border-radius:16px;color:var(--text);padding:0 0.9rem}
-  .broker-result{margin-top:0.85rem;padding:0.9rem;border-radius:16px;border:1px solid rgba(245,184,45,.18);background:rgba(0,0,0,.28);min-height:90px;font-size:0.9rem}
+  .broker-form label{display:grid;gap:0.35rem;color:#94a3b8;font-size:0.86rem;font-weight:850}
+  .broker-form input{min-height:52px;background:rgba(255,255,255,.04);border:1px solid rgba(0,240,255,.18);border-radius:16px;color:var(--text);padding:0 0.9rem}
+  .broker-result{margin-top:0.85rem;padding:0.9rem;border-radius:16px;border:1px solid rgba(0,240,255,.18);background:rgba(0,0,0,.28);min-height:90px;font-size:0.9rem}
   .broker-actions{display:grid;gap:0.7rem;grid-template-columns:1fr 1fr}
   @media(max-width:560px){.broker-actions{grid-template-columns:1fr}}
   .broker-connected-card{display:grid;gap:1rem}
-  .connected-status{display:grid;gap:0.55rem;padding:1rem;border-radius:16px;border:1px solid rgba(46,204,113,.28);background:rgba(46,204,113,.08)}
-  .connected-status h3{margin:0;color:#fff5df;font-size:1.05rem}
-  .connected-meta{display:grid;gap:0.35rem;color:#d8c7a0;font-size:0.88rem}
-  .connected-meta b{color:#fff5df}
+  .connected-status{display:grid;gap:0.55rem;padding:1rem;border-radius:16px;border:1px solid rgba(16,185,129,.28);background:rgba(16,185,129,.08)}
+  .connected-status h3{margin:0;color:#ffffff;font-size:1.05rem}
+  .connected-meta{display:grid;gap:0.35rem;color:#94a3b8;font-size:0.88rem}
+  .connected-meta b{color:#ffffff}
   .button-danger{min-height:52px;border-radius:16px;border:1px solid rgba(255,77,77,.45);background:linear-gradient(180deg,rgba(255,77,77,.22),rgba(120,20,20,.35));color:#ffe8e8;font-weight:900;cursor:pointer}
   .button-danger:disabled{opacity:.55;cursor:not-allowed}
   #brokerLockOverlay{display:none}
@@ -31,16 +34,6 @@
   #brokerConnectedCard.is-visible{display:grid}
   .gated-blur.is-locked > .gated-content{filter:blur(7px);pointer-events:none;user-select:none}
   .gated-blur:not(.is-locked) > .gated-content{filter:none;pointer-events:auto;user-select:auto}
-  /* Select2 — Smart Broker Autofill combobox, restyled to match glass theme */
-  .select2-container{width:100%!important}
-  .select2-container .select2-selection--single{height:52px;background:rgba(255,255,255,.04);border:1px solid rgba(245,184,45,.18);border-radius:16px;display:flex;align-items:center;padding:0 0.9rem}
-  .select2-container .select2-selection--single .select2-selection__rendered{color:var(--text);line-height:normal;padding:0}
-  .select2-container .select2-selection--single .select2-selection__arrow{height:52px;right:0.6rem}
-  .select2-dropdown{background:#0d0d0f;border:1px solid rgba(245,184,45,.22);border-radius:14px;overflow:hidden}
-  .select2-search--dropdown .select2-search__field{background:rgba(255,255,255,.05);border:1px solid rgba(245,184,45,.18);border-radius:10px;color:var(--text)}
-  .select2-results__option{color:#fff5df}
-  .select2-container--default .select2-results__option--highlighted[aria-selected]{background:rgba(245,184,45,.22);color:#fff5df}
-  .select2-container--default .select2-selection--single .select2-selection__arrow b{border-color:#f5b82d transparent transparent transparent}
 </style>
 
 </head>
@@ -63,7 +56,7 @@
   
 <div class="dashboard-shell">
   <header class="app-header">
-    <a class="app-brand" href="./panel_dashboard.html"><span>N99</span><strong>Broker Vault</strong></a>
+    <a class="app-brand" href="./panel_dashboard.html"><span>N99 AI ORGANISM</span><strong>Broker Vault</strong></a>
     <span class="neon-pill" id="brokerTierPill">CHECKING</span>
   </header>
 
@@ -73,7 +66,7 @@
         <div class="card-topline" style="margin-bottom:1rem;">
           <div>
             <p class="section-label">MT5 Credential Gateway</p>
-            <h2 style="margin:0;color:#fff5df;">Secure Broker Connection</h2>
+            <h2 style="margin:0;color:#ffffff;">Secure Broker Connection</h2>
           </div>
           <span class="neon-pill">AES-256 VAULT</span>
         </div>
@@ -102,7 +95,10 @@
         <div class="broker-result" id="userBrokerResult">Menunggu permission check...</div>
       </div>
       <div class="lock-overlay" id="brokerLockOverlay" hidden aria-hidden="true">
-        <div class="lock-badge">🔒 Locked — Upgrade Tier to Connect Broker</div>
+        <div class="lock-badge" style="display:flex;align-items:center;gap:0.5rem;justify-content:center;">
+          <svg aria-hidden="true" style="width:18px;height:18px;flex:0 0 auto;"><use href="./assets/icons/icons.svg#lock"></use></svg>
+          Locked — Upgrade Tier to Connect Broker
+        </div>
       </div>
     </section>
   </main>
@@ -136,47 +132,9 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+<script src="./js/broker_servers.js?v=18000001"></script>
 <script src="./js/ui_toast.js?v=16000003"></script>
 <script src="./js/broker_panel.js?v=16000004"></script>
-<script>
-  // Smart Broker Autofill — Select2 combobox backed by GET /api/broker/list.
-  // tags:true lets the user type a custom/unlisted broker server manually.
-  (function () {
-    "use strict";
-    function boot() {
-      if (!window.jQuery || !window.jQuery.fn.select2) {
-        window.setTimeout(boot, 50);
-        return;
-      }
-      var $ = window.jQuery;
-      $("#userBrokerServer").select2({
-        theme: "default",
-        width: "100%",
-        tags: true,
-        allowClear: false,
-        placeholder: "Search or type broker server...",
-        minimumInputLength: 0,
-        ajax: {
-          url: function () {
-            return (window.N99Gateway ? window.N99Gateway.gatewayBase() : (window.N99_GATEWAY_URL || window.N99_CONFIG?.API_BASE_URL || "")) + "/api/broker/list";
-          },
-          dataType: "json",
-          delay: 200,
-          cache: true,
-          beforeSend: function (xhr) {
-            var token = window.N99Gateway ? window.N99Gateway.getToken() : "";
-            if (token) xhr.setRequestHeader("Authorization", "Bearer " + token);
-          },
-          processResults: function (data) {
-            var list = Array.isArray(data) ? data : (data.results || []);
-            return { results: list };
-          },
-        },
-      });
-    }
-    document.addEventListener("DOMContentLoaded", boot);
-  })();
-</script>
 
 </body>
 </html>
