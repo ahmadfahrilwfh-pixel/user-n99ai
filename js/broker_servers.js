@@ -12,7 +12,7 @@
     "MetaQuotes-Demo",
 
     /* ── Versus Trade ── */
-    "VersusTrade-Live",
+    "VersusTrade-Live1",
     "VersusTrade-Demo",
     "VersusTrade-MT5",
     "VersusTrade-MT5-Live",
