@@ -1,41 +1,27 @@
-/**
- * N99 AI ORGANISM — Master Design Tokens (UI UX Promax / Web3)
- * Palette: deep void blue, dark glass cards, cyan→purple gradient accents.
- */
-
 :root {
-  --bg: #0b0e17;
-  --bg-soft: #0d1120;
-  --panel: rgba(18, 22, 32, 0.86);
-  --panel-strong: rgba(13, 17, 27, 0.94);
-  --card: #121620;
-  --line: rgba(255, 255, 255, 0.05);
+  --bg: #020202;
+  --bg-soft: #080808;
+  --panel: rgba(14, 14, 14, 0.72);
+  --panel-strong: rgba(9, 9, 9, 0.88);
+  --line: rgba(244, 189, 80, 0.24);
   --line-soft: rgba(255, 255, 255, 0.08);
-  --line-bright: rgba(0, 240, 255, 0.45);
-  --cyan: #00f0ff;
-  --purple: #5753fe;
-  --blue: #3b82f6;
-  --accent-grad: linear-gradient(135deg, #00f0ff 0%, #3b82f6 48%, #5753fe 100%);
-  /* Legacy aliases — older selectors still reference these */
-  --gold: #00f0ff;
-  --gold-light: #9be8ff;
-  --gold-deep: #5753fe;
-  --green: #10b981;
+  --line-bright: rgba(245, 184, 45, 0.52);
+  --gold: #f5b82d;
+  --gold-light: #ffe4a0;
+  --gold-deep: #9b6418;
+  --green: #58e365;
   --red: #ff5b61;
-  --text: #ffffff;
-  --muted: #94a3b8;
-  --muted-2: #64748b;
-  --shadow: 0 24px 80px rgba(2, 6, 18, 0.55);
+  --text: #f8f4eb;
+  --muted: #b9b0a1;
+  --muted-2: #7f7667;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
   --radius: 22px;
   --radius-sm: 14px;
   --nav-height: 82px;
   --shell: 1240px;
-  --glow-gold: 0 0 46px rgba(0, 240, 255, 0.2);
-  --glow-gold-soft: 0 0 22px rgba(0, 240, 255, 0.12);
-  --glow-accent: 0 0 34px rgba(87, 83, 254, 0.28);
-  --glow-green: 0 0 30px rgba(16, 185, 129, 0.28);
-  --font-ui: "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --font-data: "Space Grotesk", "Plus Jakarta Sans", ui-monospace, monospace;
+  --glow-gold: 0 0 46px rgba(245, 184, 45, 0.22);
+  --glow-gold-soft: 0 0 22px rgba(245, 184, 45, 0.14);
+  --glow-green: 0 0 30px rgba(87, 231, 104, 0.28);
   --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -43,9 +29,9 @@
 
 html { scroll-behavior: smooth; min-width: 320px; }
 
-/* Institutional focus ring */
+/* Institutional-grade focus ring — accessible without looking like a casino flash */
 :focus-visible {
-  outline: 2px solid rgba(0, 240, 255, 0.6);
+  outline: 2px solid rgba(245, 184, 45, 0.65);
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -53,41 +39,13 @@ html { scroll-behavior: smooth; min-width: 320px; }
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 15% -4%, rgba(0, 240, 255, 0.1), transparent 34rem),
-    radial-gradient(circle at 88% 18%, rgba(87, 83, 254, 0.14), transparent 32rem),
-    radial-gradient(circle at 45% 110%, rgba(59, 130, 246, 0.1), transparent 40rem),
-    linear-gradient(180deg, #0c1020 0%, #0b0e17 52%, #090c14 100%);
+    radial-gradient(circle at 18% 2%, rgba(245, 184, 45, 0.16), transparent 30rem),
+    radial-gradient(circle at 90% 28%, rgba(88, 227, 101, 0.08), transparent 28rem),
+    linear-gradient(180deg, #030303 0%, #070604 48%, #020202 100%);
   color: var(--text);
-  font-family: var(--font-ui);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
   min-height: 100svh;
-}
-
-/* Web3 depth — fixed glowing orbs behind all content */
-body::before,
-body::after {
-  content: "";
-  border-radius: 999px;
-  filter: blur(70px);
-  pointer-events: none;
-  position: fixed;
-  z-index: 0;
-}
-
-body::before {
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.14), transparent 70%);
-  height: 46vmax;
-  left: -14vmax;
-  top: -12vmax;
-  width: 46vmax;
-}
-
-body::after {
-  background: radial-gradient(circle, rgba(87, 83, 254, 0.16), transparent 70%);
-  bottom: -16vmax;
-  height: 52vmax;
-  right: -16vmax;
-  width: 52vmax;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -95,33 +53,18 @@ button, input { font: inherit; }
 button { cursor: pointer; }
 svg, img { display: block; }
 
-/* Numeric/data readouts use the data face */
-.balance-header h1,
-.balance-stats strong,
-.price-grid strong,
-.risk-grid strong,
-.portfolio-stat-primary strong,
-.plan-status-grid strong,
-.billing-grid strong,
-.confidence-ring strong,
-.price,
-.trade-header h2 {
-  font-family: var(--font-data);
-  letter-spacing: 0.01em;
-}
-
 .glass-panel {
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
-    var(--card);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025)),
+    var(--panel);
   border: 1px solid var(--line);
-  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, 0.08);
   position: relative;
   transition: border-color 260ms var(--ease-lux), box-shadow 260ms var(--ease-lux), transform 260ms var(--ease-lux);
 }
 
 .glass-panel::before {
-  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.28), rgba(87, 83, 254, 0.28), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
   content: "";
   height: 1px;
   left: 14px;
@@ -132,21 +75,20 @@ svg, img { display: block; }
 
 @media (hover: hover) and (pointer: fine) {
   .glass-panel:hover {
-    border-color: rgba(0, 240, 255, 0.22);
-    box-shadow: var(--shadow), var(--glow-gold-soft), inset 0 1px rgba(255, 255, 255, 0.08);
-    transform: translateY(-2px);
+    border-color: var(--line-bright);
+    box-shadow: var(--shadow), var(--glow-gold-soft), inset 0 1px rgba(255, 255, 255, 0.1);
   }
 }
 
 .neon-pill {
   align-items: center;
-  background: rgba(0, 240, 255, 0.07);
-  border: 1px solid rgba(0, 240, 255, 0.2);
+  background: rgba(245, 184, 45, 0.09);
+  border: 1px solid rgba(245, 184, 45, 0.22);
   border-radius: 999px;
-  color: #9be8ff;
+  color: var(--gold-light);
   display: inline-flex;
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 950;
   gap: 0.42rem;
   letter-spacing: 0.08em;
   padding: 0.45rem 0.7rem;
@@ -154,9 +96,9 @@ svg, img { display: block; }
 }
 
 .neon-pill.is-live {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.28);
-  color: #a7f3d0;
+  background: rgba(87, 231, 104, 0.1);
+  border-color: rgba(87, 231, 104, 0.26);
+  color: #caffcf;
 }
 
 .neon-pill.is-danger {
@@ -167,13 +109,13 @@ svg, img { display: block; }
 
 .button-primary {
   align-items: center;
-  background: var(--accent-grad);
+  background: linear-gradient(135deg, #fff0bb 0%, var(--gold) 42%, #b87517 100%);
   border: 0;
   border-radius: 999px;
-  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.32), inset 0 1px rgba(255, 255, 255, 0.35);
-  color: #08101f;
+  box-shadow: 0 0 34px rgba(245, 184, 45, 0.28), inset 0 1px rgba(255, 255, 255, 0.55);
+  color: #0d0800;
   display: inline-flex;
-  font-weight: 800;
+  font-weight: 900;
   gap: 0.55rem;
   justify-content: center;
   min-height: 50px;
@@ -184,12 +126,12 @@ svg, img { display: block; }
 
 .button-ghost {
   align-items: center;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--line);
   border-radius: 999px;
-  color: #d4e6f6;
+  color: #f7ddb0;
   display: inline-flex;
-  font-weight: 800;
+  font-weight: 900;
   gap: 0.55rem;
   justify-content: center;
   min-height: 50px;
@@ -200,14 +142,14 @@ svg, img { display: block; }
 
 @media (hover: hover) and (pointer: fine) {
   .button-primary:hover:not(:disabled) {
-    box-shadow: 0 10px 42px rgba(0, 240, 255, 0.35), 0 4px 22px rgba(87, 83, 254, 0.4), inset 0 1px rgba(255, 255, 255, 0.45);
-    filter: brightness(1.06);
+    box-shadow: 0 0 48px rgba(245, 184, 45, 0.4), inset 0 1px rgba(255, 255, 255, 0.6);
+    filter: brightness(1.04);
     transform: translateY(-1px);
   }
 
   .button-ghost:hover:not(:disabled) {
-    background: rgba(0, 240, 255, 0.06);
-    border-color: rgba(0, 240, 255, 0.35);
+    background: rgba(245, 184, 45, 0.08);
+    border-color: var(--line-bright);
     transform: translateY(-1px);
   }
 }
@@ -226,7 +168,7 @@ svg, img { display: block; }
 .lock-overlay {
   align-items: center;
   backdrop-filter: blur(6px);
-  background: rgba(11, 14, 23, 0.6);
+  background: rgba(2, 2, 2, 0.55);
   border-radius: inherit;
   display: flex;
   inset: 0;
@@ -238,11 +180,11 @@ svg, img { display: block; }
 }
 
 .lock-overlay .lock-badge {
-  background: rgba(87, 83, 254, 0.12);
-  border: 1px solid rgba(87, 83, 254, 0.4);
+  background: rgba(245, 184, 45, 0.12);
+  border: 1px solid rgba(245, 184, 45, 0.35);
   border-radius: 18px;
-  color: #e3e1ff;
-  font-weight: 800;
+  color: #fff2d1;
+  font-weight: 850;
   max-width: 22rem;
   padding: 1rem 1.2rem;
 }

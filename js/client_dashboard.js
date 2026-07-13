@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { auth } from "./firebase.config.js";
+import { auth, initError } from "./firebase.config.js";
 
 const gw = () => window.N99Gateway;
 const guard = () => window.N99RouteGuard;
@@ -11,7 +11,7 @@ const PLANS = window.N99_CONFIG?.PLANS || {
   VIP: { tier: "VIP", amount: 10000000 },
 };
 const POLL_MS = 15000;
-const BILLING_MS = 15000;
+const POLL_MAX_MS = 120000;
 
 const $ = (id) => document.getElementById(id);
 let selectedPlanKey = null;
@@ -19,7 +19,8 @@ let brokerUnlocked = false;
 let currentUid = "";
 let currentTenantId = "";
 let currentDisplayName = "";
-let pollStarted = false;
+let pollTimer = null;
+let pollDelayMs = POLL_MS;
 
 function resetDashboardState() {
   paintMoney($("metricBalance"), 0);
@@ -54,6 +55,66 @@ function setPageLoading(active) {
   if (bar) bar.hidden = !active;
   const root = $("dashboardRoot");
   if (root) root.classList.toggle("is-syncing", active);
+}
+
+function setConnectionBanner(kind, message) {
+  const banner = $("connectionStatusBanner");
+  if (!banner) return;
+  if (!kind) {
+    banner.hidden = true;
+    banner.textContent = "";
+    banner.className = "connection-status-banner";
+    return;
+  }
+  banner.hidden = false;
+  banner.textContent = message;
+  banner.className = "connection-status-banner is-" + kind;
+}
+
+function resolveStatusMessage(err) {
+  if (initError) return { kind: "firebase", message: "Firebase Error — " + initError.message };
+  if (err && err.code === "circuit_open") {
+    return { kind: "offline", message: "API Unavailable — pausing requests briefly" };
+  }
+  if (err && err.status === 503) {
+    const detail =
+      err.payload?.message ||
+      err.payload?.detail?.message ||
+      err.payload?.detail?.last_error ||
+      err.message;
+    return { kind: "offline", message: "API Unavailable — " + detail };
+  }
+  if (err && (err.name === "TypeError" || /failed to fetch/i.test(String(err.message || "")))) {
+    return { kind: "offline", message: "Backend Offline — check API gateway" };
+  }
+  return { kind: "error", message: "Sync error — " + (err?.message || "unknown") };
+}
+
+function scheduleNextPoll() {
+  if (pollTimer) window.clearTimeout(pollTimer);
+  pollTimer = window.setTimeout(async () => {
+    try {
+      await tick();
+      pollDelayMs = POLL_MS;
+    } catch (_e) {
+      pollDelayMs = Math.min(POLL_MAX_MS, Math.max(POLL_MS, pollDelayMs * 2));
+    } finally {
+      scheduleNextPoll();
+    }
+  }, pollDelayMs);
+}
+
+function startPolling() {
+  if (pollTimer) return;
+  pollDelayMs = POLL_MS;
+  scheduleNextPoll();
+}
+
+function stopPolling() {
+  if (pollTimer) {
+    window.clearTimeout(pollTimer);
+    pollTimer = null;
+  }
 }
 
 function setButtonLoading(button, loading, loadingText) {
@@ -200,7 +261,11 @@ async function refreshIdentity(user) {
     currentDisplayName = identity.display_name || user?.displayName || user?.email || "";
     renderUserIdentity(currentDisplayName, currentTenantId);
     return identity;
-  } catch (_e) {
+  } catch (e) {
+    if (e.status !== 401) {
+      const status = resolveStatusMessage(e);
+      setConnectionBanner(status.kind, status.message);
+    }
     currentDisplayName = user?.displayName || user?.email || "";
     renderUserIdentity(currentDisplayName, currentTenantId);
     return null;
@@ -208,14 +273,17 @@ async function refreshIdentity(user) {
 }
 
 async function refreshMetrics() {
-  const data = await gw().gatewayFetch("/api/user/metrics", { retries: 2 });
+  const data = await gw().gatewayFetch("/api/user/metrics", { retries: 1 });
   const acc = data.account || {};
 
   if (data.tenant_id) currentTenantId = data.tenant_id;
   if (data.display_name) currentDisplayName = data.display_name;
   renderUserIdentity(currentDisplayName, currentTenantId);
-  
-  // Empty state handling for broker metrics
+
+  if (data.degraded) {
+    setConnectionBanner("warning", "API Degraded — showing local metrics only");
+  }
+
   const hasMetrics = acc.balance != null || acc.equity != null;
   
   paintMoney($("metricBalance"), hasMetrics ? acc.balance : 0);
@@ -233,8 +301,11 @@ async function refreshMetrics() {
 }
 
 async function refreshPermissionsAndBilling() {
-  const perms = await gw().gatewayFetch("/api/permissions");
-  const billing = await gw().gatewayFetch("/api/user/billing");
+  const perms = await gw().gatewayFetch("/api/permissions", { retries: 1 });
+  const billing = await gw().gatewayFetch("/api/user/billing", { retries: 1 });
+  if (perms.degraded || billing.degraded) {
+    setConnectionBanner("warning", "Subscription data degraded — using safe defaults");
+  }
   applyPermissions(perms, billing);
   return { perms, billing };
 }
@@ -351,27 +422,37 @@ async function saveBrokerToVault() {
 async function tick() {
   try {
     setPageLoading(true);
-    // Network connectivity check
     if (!navigator.onLine) {
       throw new Error("No internet connection");
     }
+    if (initError) {
+      throw initError;
+    }
+    const health = await gw().healthCheck();
+    if (health && health.ok === false && !health.firebase?.auth_ready) {
+      const err = new Error(health.firebase?.last_error || "API health check failed");
+      err.status = 503;
+      throw err;
+    }
     await Promise.all([refreshMetrics(), refreshPermissionsAndBilling()]);
+    setConnectionBanner(null);
+    pollDelayMs = POLL_MS;
     if ($("dashboardNote")) $("dashboardNote").textContent = "Last sync " + new Date().toLocaleTimeString();
   } catch (e) {
     if (e.status === 401) {
       gw().clearToken();
+      stopPolling();
       window.location.replace(AUTH_URL);
       return;
     }
+    const status = resolveStatusMessage(e);
+    setConnectionBanner(status.kind, status.message);
     if (e.message === "No internet connection") {
       if ($("dashboardNote")) $("dashboardNote").textContent = "Offline — waiting for connection...";
-      toast()?.warning("No internet connection. Retrying...");
-    } else if (e.status === 503) {
-      if ($("dashboardNote")) $("dashboardNote").textContent = "Service temporarily unavailable — retrying...";
-    } else {
-      if ($("dashboardNote")) $("dashboardNote").textContent = "Gateway error: " + e.message;
-      toast()?.error("Sync error: " + e.message);
+    } else if ($("dashboardNote")) {
+      $("dashboardNote").textContent = status.message;
     }
+    throw e;
   } finally {
     setPageLoading(false);
   }
@@ -397,31 +478,36 @@ function bindUi() {
   setBrokerLocked(true);
 }
 
-onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    currentUid = "";
-    currentTenantId = "";
-    currentDisplayName = "";
-    requireAuthRedirect();
-    return;
-  }
-  if (currentUid && currentUid !== user.uid) {
-    resetDashboardState();
-  }
-  currentUid = user.uid;
-  currentDisplayName = user.displayName || user.email || "";
-  const remember = Boolean(localStorage.getItem(gw().TOKEN_KEY));
-  const token = await user.getIdToken(true);
-  gw().setToken(token, remember);
-  bindUi();
-  renderUserIdentity(currentDisplayName, currentTenantId);
-  await refreshIdentity(user);
-  await tick();
-  if (!pollStarted) {
-    pollStarted = true;
-    window.setInterval(tick, POLL_MS);
-    window.setInterval(refreshPermissionsAndBilling, BILLING_MS);
-  }
-});
+if (auth && !initError) {
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      currentUid = "";
+      currentTenantId = "";
+      currentDisplayName = "";
+      stopPolling();
+      requireAuthRedirect();
+      return;
+    }
+    if (currentUid && currentUid !== user.uid) {
+      resetDashboardState();
+    }
+    currentUid = user.uid;
+    currentDisplayName = user.displayName || user.email || "";
+    const remember = Boolean(localStorage.getItem(gw().TOKEN_KEY));
+    const token = await user.getIdToken(true);
+    gw().setToken(token, remember);
+    bindUi();
+    renderUserIdentity(currentDisplayName, currentTenantId);
+    await refreshIdentity(user);
+    try {
+      await tick();
+    } catch (_e) {
+      /* banner already set */
+    }
+    startPolling();
+  });
+} else {
+  setConnectionBanner("firebase", "Firebase Error — " + (initError?.message || "auth unavailable"));
+}
 
 requireAuthRedirect();

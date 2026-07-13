@@ -3,16 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0d1120">
-  <title>N99 AI ORGANISM | Multi-Tenant AI Trading SaaS</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="./css/user_tokens.css?v=19000001">
-  <link rel="stylesheet" href="./css/user_dashboard.css?v=19000001">
+  <meta name="theme-color" content="#050505">
+  <title>N99 AI | Multi-Tenant AI Trading SaaS</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./css/user_tokens.css?v=16000001">
+  <link rel="stylesheet" href="./css/user_dashboard.css?v=16000001">
   
-<link rel="stylesheet" href="./css/landing.css?v=19000001">
-<link rel="stylesheet" href="./css/user_auth.css?v=19000001">
+<link rel="stylesheet" href="./css/landing.css?v=16000002">
+<link rel="stylesheet" href="./css/user_auth.css?v=16000002">
 
 </head>
 <body class="user-platform page-landing">
@@ -26,7 +24,8 @@
       projectId: "n99-saas-trading",
       storageBucket: "n99-saas-trading.firebasestorage.app",
       messagingSenderId: "840525105232",
-      appId: "1:840525105232:web:f375cc7344a57a19f82955"
+      appId: "1:840525105232:web:f375cc7344a57a19f82955",
+      measurementId: "G-8202HE9J7Y"
     };
   </script>
   <script src="./js/route_guard.js?v=16000002"></script>
@@ -38,9 +37,9 @@
 
   <header class="site-header" data-header>
     <nav class="nav shell" aria-label="Navigasi utama">
-      <a class="brand" href="./index.html" aria-label="N99 AI ORGANISM">
-        <span class="brand-mark">N99 AI ORGANISM</span>
-        <span class="brand-text">Trading System</span>
+      <a class="brand" href="./index.html" aria-label="N99AIorganism">
+        <span class="brand-mark">N99</span>
+        <span class="brand-text">AIorganism</span>
       </a>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu" data-nav-toggle>
@@ -72,11 +71,10 @@
         </p>
 
         <div class="hero-actions">
-<button class="button-start-ai" type="button" data-auth-open="register" onclick="this.classList.add('is-launching'); setTimeout(() => this.classList.remove('is-launching'), 800)">
-  <span class="ai-text">START AI</span>
-  <div class="cyber-ring"></div>
-  <div class="radar-scan"></div>
-</button>
+          <button class="button button-primary" type="button" data-auth-open="register">
+            Start Trading with AI
+            <svg aria-hidden="true"><use href="./assets/icons/icons.svg#arrow-right"></use></svg>
+          </button>
           <a class="button button-ghost" href="#pricing">View Pricing &amp; Plans</a>
         </div>
 
@@ -89,13 +87,13 @@
         <div class="funds-card glass-panel">
           <svg aria-hidden="true"><use href="./assets/icons/icons.svg#shield"></use></svg>
           <div>
-            <strong>N99 AI SYSTEM does not hold your funds</strong>
-            <p>Dana tetap berada di akun broker Anda. N99 AI SYSTEM hanya menghubungkan eksekusi AI melalui permission terbatas.</p>
+            <strong>N99 does not hold your funds</strong>
+            <p>Dana tetap berada di akun broker Anda. N99 hanya menghubungkan eksekusi AI melalui permission terbatas.</p>
           </div>
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-label="Preview dashboard N99 AI ORGANISM">
+      <div class="hero-visual reveal" aria-label="Preview dashboard N99 AI">
         <div class="visual-halo" aria-hidden="true"></div>
         <div class="hero-panel-preview glass-panel">
           <span class="section-kicker">Live Tenant Dashboard</span>
@@ -114,7 +112,7 @@
   <section class="section" id="intro">
     <div class="shell">
       <div class="section-heading reveal">
-        <span class="section-kicker">Introduction to N99 AI ORGANISM</span>
+        <span class="section-kicker">Introduction to N99 AI</span>
         <h2>High-security AI trading for gated SaaS tenants.</h2>
         <p>
           N99 AI memisahkan keputusan AI, validasi risiko, dan eksekusi broker agar setiap tenant beroperasi
@@ -237,9 +235,9 @@
   <footer class="footer">
     <div class="shell footer-grid">
       <div>
-        <a class="brand" href="./index.html" aria-label="N99 AI ORGANISM">
-          <span class="brand-mark">N99 AI ORGANISM</span>
-          <span class="brand-text">Trading System</span>
+        <a class="brand" href="./index.html" aria-label="N99AIorganism">
+          <span class="brand-mark">N99</span>
+          <span class="brand-text">AIorganism</span>
         </a>
         <p>Premium Multi-Tenant AI Trading SaaS — gated, secure, tenant-isolated.</p>
       </div>
@@ -250,7 +248,7 @@
       </div>
     </div>
     <div class="shell footer-bottom">
-      <span>&copy; <span data-year></span> N99 AI ORGANISM. All rights reserved.</span>
+      <span>&copy; <span data-year></span> N99AIorganism. All rights reserved.</span>
       <span>Observe &middot; Assist &middot; Automate</span>
     </div>
   </footer>
@@ -266,7 +264,7 @@
       <div class="auth-card-glow" aria-hidden="true"></div>
       <div class="auth-card-inner">
         <div class="auth-heading">
-          <span class="mini-logo">N99 AI ORGANISM</span>
+          <span class="mini-logo">N99</span>
           <div>
             <h2 id="authTitle">Welcome Back</h2>
             <p data-auth-subtitle>Login untuk mengakses AI trading dashboard.</p>
@@ -339,7 +337,7 @@
           </label>
           <label class="consent">
             <input type="checkbox" required>
-            <span>Saya memahami bahwa N99 AI ORGANISM tidak menyimpan dana dan tidak menjamin profit trading.</span>
+            <span>Saya memahami bahwa N99AIorganism tidak menyimpan dana dan tidak menjamin profit trading.</span>
           </label>
           <button class="submit-button" type="submit" data-submit-register>Create Verified Account</button>
           <p class="form-note">Referral dari URL <code>?ref=XYZ123</code> disimpan otomatis ke sessionStorage.</p>
@@ -349,7 +347,7 @@
           <div class="forgot-copy">
             <svg aria-hidden="true"><use href="./assets/icons/icons.svg#key"></use></svg>
             <h3>Reset your password</h3>
-            <p>Masukkan email akun N99 AI SYSTEM. Firebase akan mengirim link reset password.</p>
+            <p>Masukkan email akun N99. Firebase akan mengirim link reset password.</p>
           </div>
           <label class="field">
             <span>Email Address</span>

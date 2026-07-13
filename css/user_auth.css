@@ -1,18 +1,17 @@
 :root {
-  --bg: #0b0e17;
-  --panel: rgba(18, 22, 32, 0.82);
+  --bg: #020202;
+  --panel: rgba(10, 10, 10, 0.82);
   --panel-soft: rgba(255, 255, 255, 0.045);
-  --line: rgba(255, 255, 255, 0.05);
-  --line-strong: rgba(0, 240, 255, 0.4);
-  --accent-grad: linear-gradient(135deg, #00f0ff 0%, #3b82f6 48%, #5753fe 100%);
-  --gold: #00f0ff;
-  --gold-light: #9be8ff;
-  --gold-deep: #5753fe;
-  --green: #10b981;
+  --line: rgba(245, 184, 45, 0.24);
+  --line-strong: rgba(245, 184, 45, 0.46);
+  --gold: #f5b82d;
+  --gold-light: #ffe7a6;
+  --gold-deep: #9a6114;
+  --green: #55e866;
   --red: #ff6369;
-  --text: #ffffff;
-  --muted: #94a3b8;
-  --muted-dark: #64748b;
+  --text: #fff8eb;
+  --muted: #b8ae9e;
+  --muted-dark: #776f62;
   --shadow: 0 26px 90px rgba(0, 0, 0, 0.56);
   --radius: 26px;
   --radius-sm: 16px;
@@ -28,11 +27,11 @@ html {
 
 body {
   background:
-    radial-gradient(circle at 18% 12%, rgba(0, 240, 255, 0.1), transparent 26rem),
-    radial-gradient(circle at 82% 26%, rgba(87, 83, 254, 0.14), transparent 26rem),
-    linear-gradient(145deg, #0c1020 0%, #0b0e17 58%, #090c14 100%);
+    radial-gradient(circle at 18% 18%, rgba(245, 184, 45, 0.16), transparent 24rem),
+    radial-gradient(circle at 82% 22%, rgba(85, 232, 102, 0.08), transparent 24rem),
+    linear-gradient(145deg, #020202 0%, #070604 58%, #020202 100%);
   color: var(--text);
-  font-family: "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   margin: 0;
 }
 
@@ -65,8 +64,8 @@ img {
 
 .auth-shell::before {
   background:
-    linear-gradient(rgba(0, 240, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(245, 184, 45, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 184, 45, 0.035) 1px, transparent 1px);
   background-size: 72px 72px;
   content: "";
   inset: 0;
@@ -104,7 +103,7 @@ img {
   color: transparent;
   font-weight: 950;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 26px rgba(0, 240, 255, 0.24);
+  text-shadow: 0 0 26px rgba(245, 184, 45, 0.24);
 }
 
 .brand-mark {
@@ -112,14 +111,14 @@ img {
 }
 
 .brand-name {
-  color: #b8c7db;
+  color: #f5d79a;
   font-size: 0.95rem;
   font-weight: 800;
 }
 
 .eyebrow {
   align-items: center;
-  background: rgba(0, 240, 255, 0.08);
+  background: rgba(245, 184, 45, 0.08);
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--gold-light);
@@ -157,7 +156,7 @@ img {
 
 .device-card {
   background:
-    radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.16), transparent 16rem),
+    radial-gradient(circle at 50% 20%, rgba(245, 184, 45, 0.16), transparent 16rem),
     linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.02)),
     rgba(4, 4, 4, 0.86);
   border: 1px solid var(--line);
@@ -203,7 +202,7 @@ img {
 .status-pill span {
   background: var(--green);
   border-radius: 50%;
-  box-shadow: 0 0 18px rgba(16, 185, 129, 0.78);
+  box-shadow: 0 0 18px rgba(85, 232, 102, 0.78);
   height: 8px;
   width: 8px;
 }
@@ -221,7 +220,7 @@ img {
 
 .secure-grid div {
   background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(245, 184, 45, 0.15);
   border-radius: 14px;
   padding: 0.85rem;
 }
@@ -233,7 +232,7 @@ img {
 }
 
 .secure-grid strong {
-  color: #ffffff;
+  color: #fff2d1;
 }
 
 .trust-row {
@@ -244,9 +243,9 @@ img {
 .trust-row div {
   align-items: center;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 240, 255, 0.14);
+  border: 1px solid rgba(245, 184, 45, 0.14);
   border-radius: 999px;
-  color: #b8c7db;
+  color: #f6d99b;
   display: flex;
   font-weight: 800;
   gap: 0.6rem;
@@ -271,7 +270,7 @@ img {
 }
 
 .auth-card-glow {
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.2), transparent 62%);
+  background: radial-gradient(circle, rgba(245, 184, 45, 0.2), transparent 62%);
   filter: blur(12px);
   height: 15rem;
   position: absolute;
@@ -330,7 +329,7 @@ img {
 
 .auth-tabs button.is-active {
   background: linear-gradient(135deg, var(--gold-light), var(--gold) 44%, var(--gold-deep));
-  color: #08101f;
+  color: #0b0700;
 }
 
 .auth-alert {
@@ -342,8 +341,8 @@ img {
 }
 
 .auth-alert.is-success {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.28);
+  background: rgba(85, 232, 102, 0.1);
+  border: 1px solid rgba(85, 232, 102, 0.28);
   color: #bdfac4;
 }
 
@@ -387,7 +386,7 @@ img {
 .google-button {
   background: rgba(255, 255, 255, 0.055);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  color: #fff6e3;
 }
 
 .google-button svg,
@@ -422,7 +421,7 @@ img {
 
 .field > span,
 .consent {
-  color: #94a3b8;
+  color: #f7dca7;
   font-size: 0.86rem;
   font-weight: 850;
 }
@@ -430,7 +429,7 @@ img {
 .field-control {
   align-items: center;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 240, 255, 0.18);
+  border: 1px solid rgba(245, 184, 45, 0.18);
   border-radius: 16px;
   display: flex;
   min-height: 54px;
@@ -439,7 +438,7 @@ img {
 
 .field-control:focus-within {
   border-color: var(--line-strong);
-  box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.09);
+  box-shadow: 0 0 0 4px rgba(245, 184, 45, 0.09);
 }
 
 .field-control > svg {
@@ -513,14 +512,14 @@ input[type="checkbox"] {
 .submit-button {
   background: linear-gradient(135deg, var(--gold-light), var(--gold) 42%, var(--gold-deep));
   border: 0;
-  box-shadow: 0 0 34px rgba(0, 240, 255, 0.24), inset 0 1px rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 34px rgba(245, 184, 45, 0.24), inset 0 1px rgba(255, 255, 255, 0.55);
   color: #0c0700;
 }
 
 .secondary-button {
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid var(--line);
-  color: #b8c7db;
+  color: #f7ddb0;
 }
 
 button:disabled {
@@ -532,7 +531,7 @@ button:disabled {
 .forgot-copy,
 .verification-panel {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 240, 255, 0.16);
+  border: 1px solid rgba(245, 184, 45, 0.16);
   border-radius: 18px;
   padding: 1rem;
 }
@@ -547,7 +546,7 @@ button:disabled {
 
 .forgot-copy h3,
 .verification-panel h3 {
-  color: #ffffff;
+  color: #fff2d1;
   margin: 0 0 0.35rem;
 }
 

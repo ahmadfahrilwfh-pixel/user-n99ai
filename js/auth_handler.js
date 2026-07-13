@@ -11,7 +11,7 @@ import {
   signInWithPopup,
   updateProfile,
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { auth } from "./firebase.config.js";
+import { auth, initError } from "./firebase.config.js";
 
 const ICONS = document.querySelector("[data-icons-base]")?.dataset.iconsBase
   ? document.querySelector("[data-icons-base]").dataset.iconsBase + "#"
@@ -299,17 +299,24 @@ window.addEventListener("n99:auth-mode", (event) => {
   if (mode && copy[mode]) setMode(mode);
 });
 
-onAuthStateChanged(auth, async (user) => {
-  if (!user) return;
-  const isGoogle = user.providerData.some((p) => p.providerId === "google.com");
-  if (isGoogle || user.emailVerified) {
-    try {
-      await persistToken(user, Boolean(localStorage.getItem(gw().TOKEN_KEY)));
-      window.location.replace(DASHBOARD_URL);
-    } catch (e) {
-      console.warn(e);
+if (initError || !auth) {
+  showMessage(
+    initError?.message || "Firebase auth unavailable. Periksa N99_FIREBASE_* env vars.",
+    "error"
+  );
+} else {
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) return;
+    const isGoogle = user.providerData.some((p) => p.providerId === "google.com");
+    if (isGoogle || user.emailVerified) {
+      try {
+        await persistToken(user, Boolean(localStorage.getItem(gw().TOKEN_KEY)));
+        window.location.replace(DASHBOARD_URL);
+      } catch (e) {
+        console.warn(e);
+      }
+      return;
     }
-    return;
-  }
-  if (!user.emailVerified && window.location.hash !== "#register") showVerificationPanel(user);
-});
+    if (!user.emailVerified && window.location.hash !== "#register") showVerificationPanel(user);
+  });
+}

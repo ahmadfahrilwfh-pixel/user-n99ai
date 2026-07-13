@@ -10,13 +10,10 @@
   window.N99_CONFIG = {
     API_BASE_URL: API_BASE_URL,
     PAYMENT_SANDBOX: true,
-    
-    // Path routing disesuaikan persis dengan file hasil cetakan build_pages.py
-    LANDING_PATH: "/",
-    DASHBOARD_PATH: "/panel_dashboard.html",
-    BROKER_PATH: "/panel_broker.html",
-    BILLING_PATH: "/panel_billing.html",
-    
+    LANDING_PATH: "/user",
+    DASHBOARD_PATH: "/user/dashboard",
+    BROKER_PATH: "/user/broker",
+    BILLING_PATH: "/user/billing",
     PLANS: {
       STARTER: { tier: "STARTER", amount: 1000000, deposit: 500, label: "Rp 1.000.000" },
       PRO: { tier: "PRO", amount: 5000000, deposit: 2500, label: "Rp 5.000.000" },

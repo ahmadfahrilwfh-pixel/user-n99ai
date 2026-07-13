@@ -1,20 +1,18 @@
 :root {
-  --bg: #0b0e17;
-  --panel: rgba(18, 22, 32, 0.86);
-  --panel-strong: rgba(13, 17, 27, 0.94);
-  --card: #121620;
-  --line: rgba(255, 255, 255, 0.05);
-  --line-bright: rgba(0, 240, 255, 0.45);
-  --gold: #00f0ff;
-  --gold-light: #9be8ff;
-  --gold-deep: #5753fe;
-  --accent-grad: linear-gradient(135deg, #00f0ff 0%, #3b82f6 48%, #5753fe 100%);
-  --green: #10b981;
+  --bg: #020202;
+  --panel: rgba(10, 10, 10, 0.78);
+  --panel-strong: rgba(5, 5, 5, 0.92);
+  --line: rgba(245, 184, 45, 0.24);
+  --line-bright: rgba(245, 184, 45, 0.52);
+  --gold: #f5b82d;
+  --gold-light: #ffe7a6;
+  --gold-deep: #9b6418;
+  --green: #57e768;
   --red: #ff5f66;
-  --text: #ffffff;
-  --muted: #94a3b8;
-  --muted-2: #64748b;
-  --shadow: 0 26px 80px rgba(2, 6, 18, 0.55);
+  --text: #fff8eb;
+  --muted: #b8ad9d;
+  --muted-2: #7a7164;
+  --shadow: 0 26px 80px rgba(0, 0, 0, 0.52);
   --radius: 24px;
   --radius-sm: 16px;
   --nav-height: 82px;
@@ -39,12 +37,11 @@ html {
 
 body {
   background:
-    radial-gradient(circle at 15% -4%, rgba(0, 240, 255, 0.1), transparent 30rem),
-    radial-gradient(circle at 88% 16%, rgba(87, 83, 254, 0.13), transparent 28rem),
-    radial-gradient(circle at 45% 110%, rgba(59, 130, 246, 0.09), transparent 34rem),
-    linear-gradient(180deg, #0c1020 0%, #0b0e17 45%, #090c14 100%);
+    radial-gradient(circle at 18% 5%, rgba(245, 184, 45, 0.18), transparent 23rem),
+    radial-gradient(circle at 88% 16%, rgba(87, 231, 104, 0.08), transparent 20rem),
+    linear-gradient(180deg, #030303 0%, #080604 45%, #020202 100%);
   color: var(--text);
-  font-family: "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   margin: 0;
   min-height: 100svh;
 }
@@ -82,8 +79,8 @@ svg {
 
 .dashboard-shell::before {
   background:
-    linear-gradient(rgba(0, 240, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(245, 184, 45, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 184, 45, 0.035) 1px, transparent 1px);
   background-size: 64px 64px;
   content: "";
   inset: 0;
@@ -96,8 +93,8 @@ svg {
 .app-header {
   align-items: center;
   backdrop-filter: blur(18px);
-  background: rgba(11, 14, 23, 0.7);
-  border-bottom: 1px solid rgba(0, 240, 255, 0.13);
+  background: rgba(2, 2, 2, 0.7);
+  border-bottom: 1px solid rgba(245, 184, 45, 0.13);
   display: grid;
   gap: 0.75rem;
   grid-template-columns: 48px 1fr 48px;
@@ -111,7 +108,7 @@ svg {
 .icon-button {
   align-items: center;
   background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(0, 240, 255, 0.22);
+  border: 1px solid rgba(245, 184, 45, 0.22);
   border-radius: 14px;
   cursor: pointer;
   display: grid;
@@ -124,7 +121,7 @@ svg {
 }
 
 .icon-button:hover {
-  background: rgba(0, 240, 255, 0.08);
+  background: rgba(245, 184, 45, 0.08);
   border-color: var(--line-bright);
   transform: translateY(-1px);
 }
@@ -137,7 +134,7 @@ svg {
 
 .notification-button span {
   background: var(--green);
-  border: 2px solid #0b0e17;
+  border: 2px solid #040404;
   border-radius: 999px;
   height: 10px;
   position: absolute;
@@ -167,7 +164,7 @@ svg {
 }
 
 .app-brand strong {
-  color: #b8c7db;
+  color: #f7d995;
   display: none;
   font-size: 0.86rem;
   letter-spacing: 0.02em;
@@ -175,30 +172,21 @@ svg {
 
 .glass-panel {
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
-    var(--card);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+    var(--panel);
   border: 1px solid var(--line);
-  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow), inset 0 1px rgba(255, 255, 255, 0.08);
   position: relative;
-  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
 }
 
 .glass-panel::before {
-  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.26), rgba(87, 83, 254, 0.26), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
   content: "";
   height: 1px;
   left: 18px;
   position: absolute;
   right: 18px;
   top: 0;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .glass-panel:hover {
-    border-color: rgba(0, 240, 255, 0.2);
-    box-shadow: var(--shadow), 0 0 24px rgba(0, 240, 255, 0.1), inset 0 1px rgba(255, 255, 255, 0.08);
-    transform: translateY(-2px);
-  }
 }
 
 .dashboard-main {
@@ -220,7 +208,7 @@ svg {
 
 .hero-balance {
   background:
-    radial-gradient(circle at 82% 10%, rgba(0, 240, 255, 0.2), transparent 16rem),
+    radial-gradient(circle at 82% 10%, rgba(245, 184, 45, 0.2), transparent 16rem),
     linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
     var(--panel-strong);
 }
@@ -236,7 +224,7 @@ svg {
 }
 
 .section-label {
-  color: #94a3b8;
+  color: #dac292;
   font-size: 0.74rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -266,8 +254,8 @@ svg {
 }
 
 .balance-badge {
-  background: rgba(0, 240, 255, 0.09);
-  border: 1px solid rgba(0, 240, 255, 0.22);
+  background: rgba(245, 184, 45, 0.09);
+  border: 1px solid rgba(245, 184, 45, 0.22);
   color: var(--gold-light);
 }
 
@@ -306,7 +294,7 @@ svg {
   .risk-grid article:hover,
   .portfolio-stat-primary:hover {
     background: rgba(255, 255, 255, 0.065);
-    border-color: rgba(0, 240, 255, 0.28);
+    border-color: rgba(245, 184, 45, 0.28);
   }
 }
 
@@ -323,7 +311,7 @@ svg {
 .balance-stats strong,
 .price-grid strong,
 .risk-grid strong {
-  color: #ffffff;
+  color: #fff0cf;
   display: block;
   font-size: clamp(0.9rem, 4vw, 1.2rem);
   margin-top: 0.2rem;
@@ -340,7 +328,7 @@ svg {
 
 .mini-chart-card {
   background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(245, 184, 45, 0.12);
   border-radius: 18px;
   overflow: hidden;
   padding: 0.8rem 0.8rem 0;
@@ -369,9 +357,9 @@ svg {
 }
 
 .live-pill {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.26);
-  color: #a7f3d0;
+  background: rgba(87, 231, 104, 0.1);
+  border: 1px solid rgba(87, 231, 104, 0.26);
+  color: #caffcf;
   text-transform: uppercase;
 }
 
@@ -384,7 +372,7 @@ svg {
 .live-pill i {
   background: var(--green);
   border-radius: 999px;
-  box-shadow: 0 0 18px rgba(16, 185, 129, 0.75);
+  box-shadow: 0 0 18px rgba(87, 231, 104, 0.75);
   height: 8px;
   width: 8px;
 }
@@ -423,7 +411,7 @@ svg {
   stroke-dasharray: 352;
   stroke-dashoffset: 56;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.7));
+  filter: drop-shadow(0 0 10px rgba(87, 231, 104, 0.7));
 }
 
 .confidence-ring div {
@@ -432,7 +420,7 @@ svg {
 }
 
 .confidence-ring strong {
-  color: #ffffff;
+  color: #fff7e5;
   display: block;
   font-size: 2.1rem;
   line-height: 1;
@@ -447,7 +435,7 @@ svg {
 .risk-strip {
   align-items: center;
   background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(0, 240, 255, 0.14);
+  border: 1px solid rgba(245, 184, 45, 0.14);
   border-radius: 16px;
   display: flex;
   justify-content: space-between;
@@ -481,11 +469,11 @@ svg {
 
 .ai-control-button {
   aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.12), rgba(11, 14, 23, 0.92) 64%);
-  border: 2px solid rgba(16, 185, 129, 0.72);
+  background: radial-gradient(circle, rgba(87, 231, 104, 0.12), rgba(3, 3, 3, 0.92) 64%);
+  border: 2px solid rgba(87, 231, 104, 0.72);
   border-radius: 999px;
-  box-shadow: 0 0 42px rgba(16, 185, 129, 0.16), inset 0 0 34px rgba(16, 185, 129, 0.12);
-  color: #e8fff7;
+  box-shadow: 0 0 42px rgba(87, 231, 104, 0.16), inset 0 0 34px rgba(87, 231, 104, 0.12);
+  color: #effff0;
   cursor: pointer;
   display: grid;
   isolation: isolate;
@@ -500,7 +488,7 @@ svg {
 
 .ai-control-button::before,
 .ai-control-button::after {
-  border: 1px solid rgba(16, 185, 129, 0.22);
+  border: 1px solid rgba(87, 231, 104, 0.22);
   border-radius: inherit;
   content: "";
   inset: 18px;
@@ -532,14 +520,14 @@ svg {
 }
 
 .ai-control-button:not(.is-running) {
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.16), rgba(11, 14, 23, 0.92) 64%);
-  border-color: rgba(0, 240, 255, 0.75);
-  box-shadow: 0 0 42px rgba(0, 240, 255, 0.16), inset 0 0 34px rgba(0, 240, 255, 0.12);
+  background: radial-gradient(circle, rgba(245, 184, 45, 0.16), rgba(3, 3, 3, 0.92) 64%);
+  border-color: rgba(245, 184, 45, 0.75);
+  box-shadow: 0 0 42px rgba(245, 184, 45, 0.16), inset 0 0 34px rgba(245, 184, 45, 0.12);
 }
 
 .ai-control-button:not(.is-running)::before,
 .ai-control-button:not(.is-running)::after {
-  border-color: rgba(0, 240, 255, 0.24);
+  border-color: rgba(245, 184, 45, 0.24);
 }
 
 .ai-control-button:not(.is-running) svg {
@@ -548,7 +536,7 @@ svg {
 
 .control-glow {
   animation: n99ControlPulse 3.2s ease-in-out infinite;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.26), transparent 68%);
+  background: radial-gradient(circle, rgba(87, 231, 104, 0.26), transparent 68%);
   border-radius: inherit;
   inset: -20px;
   position: absolute;
@@ -556,7 +544,7 @@ svg {
 }
 
 .ai-control-button:not(.is-running) .control-glow {
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.3), transparent 68%);
+  background: radial-gradient(circle, rgba(245, 184, 45, 0.3), transparent 68%);
 }
 
 @keyframes n99ControlPulse {
@@ -582,13 +570,13 @@ svg {
 
 .trade-card {
   background:
-    radial-gradient(circle at 92% 10%, rgba(16, 185, 129, 0.1), transparent 15rem),
+    radial-gradient(circle at 92% 10%, rgba(87, 231, 104, 0.1), transparent 15rem),
     linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
     var(--panel);
 }
 
 .trade-header h2 {
-  color: #ffffff;
+  color: #fff5df;
   font-size: clamp(1.75rem, 8vw, 2.8rem);
   letter-spacing: 0.02em;
   line-height: 1;
@@ -600,8 +588,8 @@ svg {
 }
 
 .trade-side {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.28);
+  background: rgba(87, 231, 104, 0.12);
+  border: 1px solid rgba(87, 231, 104, 0.28);
   color: var(--green);
   min-width: 74px;
   justify-content: center;
@@ -637,7 +625,7 @@ svg {
 }
 
 .drawer-card {
-  background: rgba(15, 19, 29, 0.96);
+  background: rgba(6, 6, 6, 0.96);
   border-radius: 0 24px 24px 0;
   height: 100%;
   max-width: 320px;
@@ -665,9 +653,9 @@ svg {
 .drawer-links a {
   align-items: center;
   background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(0, 240, 255, 0.13);
+  border: 1px solid rgba(245, 184, 45, 0.13);
   border-radius: 16px;
-  color: #b8c7db;
+  color: #f8dfaa;
   display: flex;
   font-weight: 850;
   gap: 0.8rem;
@@ -681,7 +669,7 @@ svg {
 }
 
 .notification-popover {
-  background: rgba(15, 19, 29, 0.96);
+  background: rgba(6, 6, 6, 0.96);
   border-radius: 20px;
   max-width: 22rem;
   padding: 1rem;
@@ -697,7 +685,7 @@ svg {
 }
 
 .popover-title strong {
-  color: #ffffff;
+  color: #fff2d1;
 }
 
 .popover-title span {
@@ -739,7 +727,7 @@ svg {
 }
 
 .notification-list strong {
-  color: #ffffff;
+  color: #fff2d1;
   display: block;
   font-size: 0.92rem;
 }
@@ -751,8 +739,8 @@ svg {
 
 .bottom-nav {
   backdrop-filter: blur(18px);
-  background: rgba(13, 17, 27, 0.92);
-  border: 1px solid rgba(0, 240, 255, 0.18);
+  background: rgba(5, 5, 5, 0.92);
+  border: 1px solid rgba(245, 184, 45, 0.18);
   border-radius: 24px 24px 0 0;
   bottom: 0;
   box-shadow: 0 -18px 50px rgba(0, 0, 0, 0.38);
@@ -788,12 +776,12 @@ svg {
 }
 
 .bottom-nav a.is-active {
-  background: rgba(0, 240, 255, 0.08);
+  background: rgba(245, 184, 45, 0.08);
   color: var(--gold);
 }
 
 .bottom-nav a.is-active svg {
-  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.55));
+  filter: drop-shadow(0 0 8px rgba(245, 184, 45, 0.55));
   transform: translateY(-1px);
 }
 
@@ -932,8 +920,8 @@ svg {
 }
 
 .portfolio-stat-primary {
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.22);
+  background: rgba(245, 184, 45, 0.08);
+  border: 1px solid rgba(245, 184, 45, 0.22);
   border-radius: var(--radius-sm);
   padding: 0.9rem;
 }
@@ -948,7 +936,7 @@ svg {
 }
 
 .portfolio-stat-primary strong {
-  color: #ffffff;
+  color: #fff3d6;
   display: block;
   font-size: clamp(1.2rem, 5vw, 1.7rem);
   margin-top: 0.25rem;
@@ -981,7 +969,7 @@ svg {
 }
 
 .plan-status-grid strong {
-  color: #ffffff;
+  color: #fff2d1;
   display: block;
   font-size: 1rem;
   margin-top: 0.2rem;
@@ -1008,7 +996,7 @@ svg {
 
 .plan-pay-card {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 240, 255, 0.18);
+  border: 1px solid rgba(245, 184, 45, 0.18);
   border-radius: var(--radius-sm);
   color: inherit;
   cursor: pointer;
@@ -1021,17 +1009,17 @@ svg {
 
 .plan-pay-card:hover,
 .plan-pay-card.is-selected {
-  background: rgba(0, 240, 255, 0.1);
-  border-color: rgba(0, 240, 255, 0.45);
+  background: rgba(245, 184, 45, 0.1);
+  border-color: rgba(245, 184, 45, 0.45);
   transform: translateY(-1px);
 }
 
 .plan-pay-card.is-featured {
-  border-color: rgba(0, 240, 255, 0.38);
+  border-color: rgba(245, 184, 45, 0.38);
 }
 
 .plan-pay-card.is-current {
-  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(87, 231, 104, 0.35);
 }
 
 .plan-pay-tier {
@@ -1042,7 +1030,7 @@ svg {
 }
 
 .plan-pay-card strong {
-  color: #ffffff;
+  color: #fff3d6;
   font-size: 0.95rem;
 }
 
@@ -1071,7 +1059,7 @@ svg {
 }
 
 .broker-form label {
-  color: #94a3b8;
+  color: #f7dca7;
   display: grid;
   font-size: 0.86rem;
   font-weight: 850;
@@ -1080,7 +1068,7 @@ svg {
 
 .broker-form input {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 240, 255, 0.18);
+  border: 1px solid rgba(245, 184, 45, 0.18);
   border-radius: 16px;
   color: var(--text);
   min-height: 52px;
@@ -1099,7 +1087,7 @@ svg {
 
 .broker-result {
   background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(0, 240, 255, 0.18);
+  border: 1px solid rgba(245, 184, 45, 0.18);
   border-radius: 16px;
   font-size: 0.9rem;
   margin-top: 0.85rem;
@@ -1141,7 +1129,7 @@ svg {
 .toast {
   align-items: center;
   backdrop-filter: blur(12px);
-  background: rgba(15, 19, 29, 0.94);
+  background: rgba(8, 8, 8, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   box-shadow: var(--shadow);
@@ -1161,7 +1149,7 @@ svg {
 }
 
 .toast-success {
-  border-color: rgba(16, 185, 129, 0.35);
+  border-color: rgba(87, 231, 104, 0.35);
 }
 
 .toast-error {
@@ -1169,7 +1157,7 @@ svg {
 }
 
 .toast-info {
-  border-color: rgba(0, 240, 255, 0.35);
+  border-color: rgba(245, 184, 45, 0.35);
 }
 
 .toast-icon::before {
@@ -1182,7 +1170,7 @@ svg {
 .toast-info .toast-icon::before { color: var(--gold); }
 
 .toast-message {
-  color: #ffffff;
+  color: #fff4df;
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -1207,6 +1195,41 @@ svg {
   .broker-actions {
     grid-template-columns: 1fr;
   }
+}
+
+.connection-status-banner {
+  margin: 8px 18px 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: 1px solid rgba(245, 184, 45, 0.35);
+  background: rgba(245, 184, 45, 0.08);
+  color: var(--gold-light);
+}
+
+.connection-status-banner.is-offline {
+  border-color: rgba(255, 95, 102, 0.45);
+  background: rgba(255, 95, 102, 0.12);
+  color: #ffb4b8;
+}
+
+.connection-status-banner.is-firebase {
+  border-color: rgba(255, 140, 66, 0.45);
+  background: rgba(255, 140, 66, 0.12);
+  color: #ffd0a8;
+}
+
+.connection-status-banner.is-warning {
+  border-color: rgba(245, 184, 45, 0.55);
+  background: rgba(245, 184, 45, 0.14);
+  color: var(--gold-light);
+}
+
+.connection-status-banner.is-error {
+  border-color: rgba(255, 95, 102, 0.45);
+  background: rgba(255, 95, 102, 0.1);
+  color: #ffb4b8;
 }
 
 @media (max-width: 560px) {
